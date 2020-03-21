@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="de.wirvsvirus.heatmapressources.entity.StateProvinceDistrict">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.Hospital">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.CityTown">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.HeatMaps_Global">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.RespiratoryVentilator">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalPatientRoom">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.Contacts">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.Patients">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.Users">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.HeatMapsKind">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.Country">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.UserRights">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalRoomFacilities">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalContacts">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>

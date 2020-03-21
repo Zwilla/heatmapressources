@@ -21,8 +21,36 @@ public class HospitalPatientRoom extends StandardEntity {
     @JoinColumn(name = "HOSPITAL_PATIENT_ROOM_ID")
     protected HospitalPatientRoom hospital_PatientRoom;
 
-    @Column(name = "DESCRIPTION")
+    @NotNull(message = "{msg://heatmapressources_HospitalPatientRoom.hpr_intensiveCareRoomNumber.validation.NotNull}")
+    @Column(name = "HPR_INTENSIVE_CARE_ROOM_NUMBER", nullable = false)
+    protected Boolean hpr_intensiveCareRoom = false;
+
+    @NotNull
+    @Column(name = "HPR_RESPIRATORY_VENTILATOR", nullable = false)
+    protected Boolean hpr_RespiratoryVentilator = false;
+
+    @Column(name = "DESCRIPTION", nullable = false)
     protected String description;
+
+
+    public void setHpr_intensiveCareRoom(Boolean hpr_intensiveCareRoom) {
+        this.hpr_intensiveCareRoom = hpr_intensiveCareRoom;
+    }
+
+
+    public Boolean getHpr_intensiveCareRoom() {
+        return hpr_intensiveCareRoom;
+    }
+
+
+    public Boolean getHpr_RespiratoryVentilator() {
+        return hpr_RespiratoryVentilator;
+    }
+
+
+    public void setHpr_RespiratoryVentilator(Boolean hpr_RespiratoryVentilator) {
+        this.hpr_RespiratoryVentilator = hpr_RespiratoryVentilator;
+    }
 
 
     public HospitalPatientRoom getHospital_PatientRoom() {
