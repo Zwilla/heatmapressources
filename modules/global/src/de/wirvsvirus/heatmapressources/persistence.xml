@@ -14,5 +14,7 @@
         <class>de.wirvsvirus.heatmapressources.entity.Patients</class>
         <class>de.wirvsvirus.heatmapressources.entity.HeatMaps_Global</class>
         <class>de.wirvsvirus.heatmapressources.entity.HeatMapsKind</class>
+        <class>de.wirvsvirus.heatmapressources.entity.UserRights</class>
+        <class>de.wirvsvirus.heatmapressources.entity.RespiratoryVentilator</class>
     </persistence-unit>
 </persistence>
