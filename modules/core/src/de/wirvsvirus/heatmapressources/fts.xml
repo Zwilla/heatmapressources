@@ -1,46 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
     <entities>
-        <entity class="de.wirvsvirus.heatmapressources.entity.StateProvinceDistrict">
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.StateProvinceDistrict">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.Hospital">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.CityTown">
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.CityTown">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.HeatMaps_Global">
+        <entity class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMaps_Global">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.RespiratoryVentilator">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.RespiratoryVentilator">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalPatientRoom">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.HospitalPatientRoom">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.Contacts">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.Contacts">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.Patients">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.Patients">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.Users">
+        <entity class="de.wirvsvirus.heatmapressources.entity.administration.Users">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.HeatMapsKind">
+        <entity class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMapsKind">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.Country">
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Country">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.UserRights">
+        <entity class="de.wirvsvirus.heatmapressources.entity.administration.UserRights">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalRoomFacilities">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.HospitalRoomFacilities">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.HospitalContacts">
+        <entity class="de.wirvsvirus.heatmapressources.entity.hospital.HospitalContacts">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Locations">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Humans">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.emergencytransportation.EmergencyTransportation">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.emergencytransportation.Abmulance">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter">
             <include re=".*"/>
         </entity>
     </entities>

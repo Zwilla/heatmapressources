@@ -1,7 +1,9 @@
-package de.wirvsvirus.heatmapressources.entity;
+package de.wirvsvirus.heatmapressources.entity.hospital;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +20,10 @@ public class Hospital extends StandardEntity {
     @Column(name = "HOSPITAL_NAME", nullable = false)
     protected String hospitalName;
 
+    @MetaProperty(datatype = "GeoPoint")
+    @Column(name = "LOCATION")
+    protected Point location;
+
     @NotNull
     @Column(name = "H_MAX_ROOMS", nullable = false)
     protected Integer h_maxRooms;
@@ -29,9 +35,32 @@ public class Hospital extends StandardEntity {
     @Column(name = "H_ROOMS_WITH_RESPIRATORY_VENTILATOR_FREE")
     protected Integer h_Rooms_With_RespiratoryVentilator_Free;
 
+    @Column(name = "H_INTENSIVE_CARE_UNITS")
+    protected Integer h_IntensiveCareUnits;
+
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     protected String description;
+
+
+    public Point getLocation() {
+        return location;
+    }
+
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+
+    public Integer getH_IntensiveCareUnits() {
+        return h_IntensiveCareUnits;
+    }
+
+
+    public void setH_IntensiveCareUnits(Integer h_IntensiveCareUnits) {
+        this.h_IntensiveCareUnits = h_IntensiveCareUnits;
+    }
 
 
     public Integer getH_Rooms_With_RespiratoryVentilator_Free() {

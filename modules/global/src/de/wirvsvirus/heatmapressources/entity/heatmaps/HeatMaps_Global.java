@@ -1,4 +1,4 @@
-package de.wirvsvirus.heatmapressources.entity;
+package de.wirvsvirus.heatmapressources.entity.heatmaps;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;

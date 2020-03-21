@@ -1,8 +1,9 @@
-package de.wirvsvirus.heatmapressources.entity;
+package de.wirvsvirus.heatmapressources.entity.hospital;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
+import de.wirvsvirus.heatmapressources.entity.hospital.HospitalContacts;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -2,19 +2,24 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="heatmapressources" transaction-type="RESOURCE_LOCAL">
 
-        <class>de.wirvsvirus.heatmapressources.entity.Users</class>
-        <class>de.wirvsvirus.heatmapressources.entity.Country</class>
-        <class>de.wirvsvirus.heatmapressources.entity.StateProvinceDistrict</class>
-        <class>de.wirvsvirus.heatmapressources.entity.CityTown</class>
-        <class>de.wirvsvirus.heatmapressources.entity.Hospital</class>
-        <class>de.wirvsvirus.heatmapressources.entity.HospitalContacts</class>
-        <class>de.wirvsvirus.heatmapressources.entity.Contacts</class>
-        <class>de.wirvsvirus.heatmapressources.entity.HospitalPatientRoom</class>
-        <class>de.wirvsvirus.heatmapressources.entity.HospitalRoomFacilities</class>
-        <class>de.wirvsvirus.heatmapressources.entity.Patients</class>
-        <class>de.wirvsvirus.heatmapressources.entity.HeatMaps_Global</class>
-        <class>de.wirvsvirus.heatmapressources.entity.HeatMapsKind</class>
-        <class>de.wirvsvirus.heatmapressources.entity.UserRights</class>
-        <class>de.wirvsvirus.heatmapressources.entity.RespiratoryVentilator</class>
+        <class>de.wirvsvirus.heatmapressources.entity.administration.Users</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Country</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.StateProvinceDistrict</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.CityTown</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.Hospital</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.HospitalContacts</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.Contacts</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.HospitalPatientRoom</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.HospitalRoomFacilities</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.Patients</class>
+        <class>de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMaps_Global</class>
+        <class>de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMapsKind</class>
+        <class>de.wirvsvirus.heatmapressources.entity.administration.UserRights</class>
+        <class>de.wirvsvirus.heatmapressources.entity.hospital.RespiratoryVentilator</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Locations</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Humans</class>
+        <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.EmergencyTransportation</class>
+        <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.Abmulance</class>
+        <class>de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter</class>
     </persistence-unit>
 </persistence>

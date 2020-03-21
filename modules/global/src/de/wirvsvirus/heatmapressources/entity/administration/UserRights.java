@@ -1,4 +1,4 @@
-package de.wirvsvirus.heatmapressources.entity;
+package de.wirvsvirus.heatmapressources.entity.administration;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
