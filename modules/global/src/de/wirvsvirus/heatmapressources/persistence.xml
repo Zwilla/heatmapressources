@@ -16,10 +16,10 @@
         <class>de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMapsKind</class>
         <class>de.wirvsvirus.heatmapressources.entity.administration.UserRights</class>
         <class>de.wirvsvirus.heatmapressources.entity.hospital.RespiratoryVentilator</class>
-        <class>de.wirvsvirus.heatmapressources.entity.locations.Locations</class>
         <class>de.wirvsvirus.heatmapressources.entity.locations.Humans</class>
         <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.EmergencyTransportation</class>
         <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.Abmulance</class>
         <class>de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter</class>
+        <class>de.wirvsvirus.heatmapressources.entity.humanresources.MedicalProfessionals</class>
     </persistence-unit>
 </persistence>

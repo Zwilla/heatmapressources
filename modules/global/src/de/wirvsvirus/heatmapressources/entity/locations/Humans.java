@@ -6,6 +6,7 @@ import com.haulmont.cuba.core.entity.annotation.CaseConversion;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Table(name = "HEATMAPRESSOURCES_HUMANS")
@@ -13,9 +14,24 @@ import java.util.Date;
 public class Humans extends StandardEntity {
     private static final long serialVersionUID = -3225238986113551300L;
 
+    @NotNull
+    @Column(name = "HR_FIRST_NAME", nullable = false)
+    protected String hr_FirstName;
+
+    @Column(name = "HR_LAST_NAME")
+    protected String hr_LastName;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "HR_BIRTHDAY")
+    protected Date hr_Birthday;
+
     @CaseConversion
     @Column(name = "HR_IMEI_NUMBER", unique = true)
     protected String hr_ImeiNumber;
+
+    @NotNull
+    @Column(name = "HR_PHONENUMBER", nullable = false)
+    protected String hr_phonenumber;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "HR_TRACKED_SINCE")
@@ -29,16 +45,70 @@ public class Humans extends StandardEntity {
 
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HR_LOCATION")
-    protected Point hr_location;
+    protected Point hr_location_Home;
+
+    @MetaProperty(datatype = "GeoPoint")
+    @Column(name = "HR_LOCATION_TRACKING")
+    protected Point hr_location_Tracking;
 
 
-    public Point getHr_location() {
-        return hr_location;
+    public Date getHr_Birthday() {
+        return hr_Birthday;
     }
 
 
-    public void setHr_location(Point hr_location) {
-        this.hr_location = hr_location;
+    public void setHr_Birthday(Date hr_Birthday) {
+        this.hr_Birthday = hr_Birthday;
+    }
+
+
+    public Point getHr_location_Tracking() {
+        return hr_location_Tracking;
+    }
+
+
+    public void setHr_location_Tracking(Point hr_location_Tracking) {
+        this.hr_location_Tracking = hr_location_Tracking;
+    }
+
+
+    public String getHr_LastName() {
+        return hr_LastName;
+    }
+
+
+    public void setHr_LastName(String hr_LastName) {
+        this.hr_LastName = hr_LastName;
+    }
+
+
+    public String getHr_FirstName() {
+        return hr_FirstName;
+    }
+
+
+    public void setHr_FirstName(String hr_FirstName) {
+        this.hr_FirstName = hr_FirstName;
+    }
+
+
+    public String getHr_phonenumber() {
+        return hr_phonenumber;
+    }
+
+
+    public void setHr_phonenumber(String hr_phonenumber) {
+        this.hr_phonenumber = hr_phonenumber;
+    }
+
+
+    public Point getHr_location_Home() {
+        return hr_location_Home;
+    }
+
+
+    public void setHr_location_Home(Point hr_location_Home) {
+        this.hr_location_Home = hr_location_Home;
     }
 
 

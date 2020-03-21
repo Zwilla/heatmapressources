@@ -43,9 +43,6 @@
         <entity class="de.wirvsvirus.heatmapressources.entity.hospital.HospitalContacts">
             <include re=".*"/>
         </entity>
-        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Locations">
-            <include re=".*"/>
-        </entity>
         <entity class="de.wirvsvirus.heatmapressources.entity.locations.Humans">
             <include re=".*"/>
         </entity>
@@ -56,6 +53,9 @@
             <include re=".*"/>
         </entity>
         <entity class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.humanresources.MedicalProfessionals">
             <include re=".*"/>
         </entity>
     </entities>
