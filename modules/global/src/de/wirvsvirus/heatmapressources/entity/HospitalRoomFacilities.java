@@ -1,10 +1,10 @@
 package de.wirvsvirus.heatmapressources.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "HEATMAPRESSOURCES_HOSPITAL_ROOM_FACILITIES")
@@ -16,48 +16,23 @@ public class HospitalRoomFacilities extends StandardEntity {
     @Column(name = "INTENSIVE_CARE_BEDS_NUMBER", nullable = false)
     protected Integer intensiveCareBedsNumber;
 
+    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "RV_RESPIRATORY_VENTILATOR_ID")
+    protected RespiratoryVentilator rv_RespiratoryVentilator;
+
     @Column(name = "DSECRIPTION")
     protected String description;
 
-    @Column(name = "HRF_RESPIRATORY_VENTILATOR")
-    protected String hrf_RespiratoryVentilator;
 
-    @NotNull
-    @Column(name = "HRF_RESPIRATORY_VENTILATOR_PORTABLE", nullable = false)
-    protected Boolean hrf_RespiratoryVentilatorPortable = false;
-
-    @NotNull
-    @Column(name = "HRF_RESPIRATORY_VENTILATOR_MAX_PATIENTS", nullable = false)
-    protected Integer hrf_RespiratoryVentilatorMaxPatients;
-
-
-    public Integer getHrf_RespiratoryVentilatorMaxPatients() {
-        return hrf_RespiratoryVentilatorMaxPatients;
+    public RespiratoryVentilator getRv_RespiratoryVentilator() {
+        return rv_RespiratoryVentilator;
     }
 
 
-    public void setHrf_RespiratoryVentilatorMaxPatients(Integer hrf_RespiratoryVentilatorMaxPatients) {
-        this.hrf_RespiratoryVentilatorMaxPatients = hrf_RespiratoryVentilatorMaxPatients;
-    }
-
-
-    public Boolean getHrf_RespiratoryVentilatorPortable() {
-        return hrf_RespiratoryVentilatorPortable;
-    }
-
-
-    public void setHrf_RespiratoryVentilatorPortable(Boolean hrf_RespiratoryVentilatorPortable) {
-        this.hrf_RespiratoryVentilatorPortable = hrf_RespiratoryVentilatorPortable;
-    }
-
-
-    public String getHrf_RespiratoryVentilator() {
-        return hrf_RespiratoryVentilator;
-    }
-
-
-    public void setHrf_RespiratoryVentilator(String hrf_RespiratoryVentilator) {
-        this.hrf_RespiratoryVentilator = hrf_RespiratoryVentilator;
+    public void setRv_RespiratoryVentilator(RespiratoryVentilator rv_RespiratoryVentilator) {
+        this.rv_RespiratoryVentilator = rv_RespiratoryVentilator;
     }
 
 

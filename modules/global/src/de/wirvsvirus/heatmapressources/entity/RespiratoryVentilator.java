@@ -18,14 +18,70 @@ public class RespiratoryVentilator extends StandardEntity {
     protected String rv_RespiratoryVentilator_Type;
 
     @NotNull
-    @Column(name = "RV_RESPIRATORY_VENTILATOR_PROTABLE", nullable = false)
-    protected Boolean rv_RespiratoryVentilator_Protable = false;
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_MANUFACTURER", nullable = false)
+    protected String rv_RespiratoryVentilator_Manufacturer;
 
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "RV_RESPIRATORY_VENTILATOR_LOCATION_ID")
     protected HospitalPatientRoom rv_RespiratoryVentilator_Location;
+
+    @NotNull
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_PROTABLE", nullable = false)
+    protected Boolean rv_RespiratoryVentilator_Protable = false;
+
+    @NotNull
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_MAX_PATIENTS", nullable = false)
+    protected Integer rv_RespiratoryVentilator_MaxPatients;
+
+    @NotNull
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_MODELL_NO", nullable = false)
+    protected String rv_RespiratoryVentilator_ModellNo;
+
+    @NotNull
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_DESCRIPTION", nullable = false, length = 2000)
+    protected String rv_RespiratoryVentilator_Description;
+
+
+    public String getRv_RespiratoryVentilator_ModellNo() {
+        return rv_RespiratoryVentilator_ModellNo;
+    }
+
+
+    public void setRv_RespiratoryVentilator_ModellNo(String rv_RespiratoryVentilator_ModellNo) {
+        this.rv_RespiratoryVentilator_ModellNo = rv_RespiratoryVentilator_ModellNo;
+    }
+
+
+    public String getRv_RespiratoryVentilator_Manufacturer() {
+        return rv_RespiratoryVentilator_Manufacturer;
+    }
+
+
+    public void setRv_RespiratoryVentilator_Manufacturer(String rv_RespiratoryVentilator_Manufacturer) {
+        this.rv_RespiratoryVentilator_Manufacturer = rv_RespiratoryVentilator_Manufacturer;
+    }
+
+
+    public String getRv_RespiratoryVentilator_Description() {
+        return rv_RespiratoryVentilator_Description;
+    }
+
+
+    public void setRv_RespiratoryVentilator_Description(String rv_RespiratoryVentilator_Description) {
+        this.rv_RespiratoryVentilator_Description = rv_RespiratoryVentilator_Description;
+    }
+
+
+    public Integer getRv_RespiratoryVentilator_MaxPatients() {
+        return rv_RespiratoryVentilator_MaxPatients;
+    }
+
+
+    public void setRv_RespiratoryVentilator_MaxPatients(Integer rv_RespiratoryVentilator_MaxPatients) {
+        this.rv_RespiratoryVentilator_MaxPatients = rv_RespiratoryVentilator_MaxPatients;
+    }
 
 
     public HospitalPatientRoom getRv_RespiratoryVentilator_Location() {
