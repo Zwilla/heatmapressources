@@ -11,5 +11,8 @@
         <class>de.wirvsvirus.heatmapressources.entity.Contacts</class>
         <class>de.wirvsvirus.heatmapressources.entity.HospitalPatientRoom</class>
         <class>de.wirvsvirus.heatmapressources.entity.HospitalRoomFacilities</class>
+        <class>de.wirvsvirus.heatmapressources.entity.Patients</class>
+        <class>de.wirvsvirus.heatmapressources.entity.HeatMaps_Global</class>
+        <class>de.wirvsvirus.heatmapressources.entity.HeatMapsKind</class>
     </persistence-unit>
 </persistence>

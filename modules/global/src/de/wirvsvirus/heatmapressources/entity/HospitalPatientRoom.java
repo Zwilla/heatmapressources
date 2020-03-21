@@ -3,9 +3,7 @@ package de.wirvsvirus.heatmapressources.entity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|description")
@@ -18,8 +16,23 @@ public class HospitalPatientRoom extends StandardEntity {
     @Column(name = "HOSPITAL_ROOM_LOCATION_NUMDER", nullable = false)
     protected String hospitalRoomLocationNumder;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "HOSPITAL_PATIENT_ROOM_ID")
+    protected HospitalPatientRoom hospital_PatientRoom;
+
     @Column(name = "DESCRIPTION")
     protected String description;
+
+
+    public HospitalPatientRoom getHospital_PatientRoom() {
+        return hospital_PatientRoom;
+    }
+
+
+    public void setHospital_PatientRoom(HospitalPatientRoom hospital_PatientRoom) {
+        this.hospital_PatientRoom = hospital_PatientRoom;
+    }
 
 
     public String getDescription() {
