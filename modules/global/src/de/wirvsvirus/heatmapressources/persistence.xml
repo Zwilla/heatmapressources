@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="heatmapressources" transaction-type="RESOURCE_LOCAL">
+
+        <class>de.wirvsvirus.heatmapressources.entity.Users</class>
+        <class>de.wirvsvirus.heatmapressources.entity.Country</class>
+        <class>de.wirvsvirus.heatmapressources.entity.StateProvinceDistrict</class>
+        <class>de.wirvsvirus.heatmapressources.entity.CityTown</class>
+        <class>de.wirvsvirus.heatmapressources.entity.Hospital</class>
+        <class>de.wirvsvirus.heatmapressources.entity.HospitalContacts</class>
+        <class>de.wirvsvirus.heatmapressources.entity.Contacts</class>
+        <class>de.wirvsvirus.heatmapressources.entity.HospitalPatientRoom</class>
+        <class>de.wirvsvirus.heatmapressources.entity.HospitalRoomFacilities</class>
+    </persistence-unit>
+</persistence>
