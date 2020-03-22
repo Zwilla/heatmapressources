@@ -17,5 +17,6 @@
         <item screen="heatmapressources_Country.browse"/>
         <item screen="heatmapressources_Humans.browse"/>
         <item screen="heatmapressources_StateProvinceDistrict.browse"/>
+        <item screen="heatmapressources_GlobalResources.browse"/>
     </menu>
 </menu-config>

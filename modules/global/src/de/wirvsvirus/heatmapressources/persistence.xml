@@ -22,5 +22,7 @@
         <class>de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter</class>
         <class>de.wirvsvirus.heatmapressources.entity.humanresources.MedicalProfessionals</class>
         <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.Emergency_Helicopter</class>
+        <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.GlobalResources</class>
+        <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.TrackingWhat</class>
     </persistence-unit>
 </persistence>

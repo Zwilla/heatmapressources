@@ -61,5 +61,11 @@
         <entity class="de.wirvsvirus.heatmapressources.entity.emergencytransportation.Emergency_Helicopter">
             <include re=".*"/>
         </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.tracking_sources.services.GlobalResources">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.tracking_sources.services.TrackingWhat">
+            <include re=".*"/>
+        </entity>
     </entities>
 </fts-config>
