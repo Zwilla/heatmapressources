@@ -34,7 +34,7 @@ public class AppLoginScreen extends LoginScreen {
 
     protected void loadStyles() {
         ScreenDependencyUtils.addScreenDependency(this,
-                "vaadin://brand-login-screen/login.css", Dependency.Type.STYLESHEET);
+                "vaadin://themes/hover/branding/login.css", Dependency.Type.STYLESHEET);
     }
 
     protected void initBottomPanel() {
@@ -50,6 +50,6 @@ public class AppLoginScreen extends LoginScreen {
     @Override
     protected void initLogoImage() {
         logoImage.setSource(RelativePathResource.class)
-                .setPath("VAADIN/brand-login-screen/cuba-icon-login.svg");
+                .setPath("VAADIN/themes/hover/branding/Hackathon_800.png");
     }
 }

@@ -1,12 +1,10 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Lookup;
-import com.haulmont.cuba.core.entity.annotation.LookupType;
-import com.haulmont.cuba.security.entity.EntityLogItem;
-import de.wirvsvirus.heatmapressources.entity.hospital.HospitalPatientRoom;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "HEATMAPRESSOURCES_RESPIRATORY_VENTILATOR")
@@ -15,21 +13,18 @@ public class RespiratoryVentilator extends StandardEntity {
     private static final long serialVersionUID = -879505979106357092L;
 
     @NotNull
-    @Column(name = "RV_RESPIRATORY_VENTILATOR_TYPE", nullable = false, columnDefinition = "local,portable")
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_MODELL_NO", nullable = false)
+    protected String rv_RespiratoryVentilator_ModellNo;
+
+    @NotNull
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_TYPE", nullable = false)
     protected String rv_RespiratoryVentilator_Type;
 
     @NotNull
     @Column(name = "RV_RESPIRATORY_VENTILATOR_MANUFACTURER", nullable = false)
     protected String rv_RespiratoryVentilator_Manufacturer;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "RV_RESPIRATORY_VENTILATOR_LOCATION_ID")
-    protected HospitalPatientRoom rv_RespiratoryVentilator_Location;
-
-    @NotNull
-    @Column(name = "RV_RESPIRATORY_VENTILATOR_PROTABLE", nullable = false)
+    @Column(name = "RV_RESPIRATORY_VENTILATOR_PROTABLE")
     protected Boolean rv_RespiratoryVentilator_Protable = false;
 
     @NotNull
@@ -37,12 +32,18 @@ public class RespiratoryVentilator extends StandardEntity {
     protected Integer rv_RespiratoryVentilator_MaxPatients;
 
     @NotNull
-    @Column(name = "RV_RESPIRATORY_VENTILATOR_MODELL_NO", nullable = false)
-    protected String rv_RespiratoryVentilator_ModellNo;
-
-    @NotNull
     @Column(name = "RV_RESPIRATORY_VENTILATOR_DESCRIPTION", nullable = false, length = 2000)
     protected String rv_RespiratoryVentilator_Description;
+
+
+    public void setRv_RespiratoryVentilator_Type(String rv_RespiratoryVentilator_Type) {
+        this.rv_RespiratoryVentilator_Type = rv_RespiratoryVentilator_Type;
+    }
+
+
+    public String getRv_RespiratoryVentilator_Type() {
+        return rv_RespiratoryVentilator_Type;
+    }
 
 
     public String getRv_RespiratoryVentilator_ModellNo() {
@@ -85,16 +86,6 @@ public class RespiratoryVentilator extends StandardEntity {
     }
 
 
-    public HospitalPatientRoom getRv_RespiratoryVentilator_Location() {
-        return rv_RespiratoryVentilator_Location;
-    }
-
-
-    public void setRv_RespiratoryVentilator_Location(HospitalPatientRoom rv_RespiratoryVentilator_Location) {
-        this.rv_RespiratoryVentilator_Location = rv_RespiratoryVentilator_Location;
-    }
-
-
     public Boolean getRv_RespiratoryVentilator_Protable() {
         return rv_RespiratoryVentilator_Protable;
     }
@@ -105,12 +96,4 @@ public class RespiratoryVentilator extends StandardEntity {
     }
 
 
-    public EntityLogItem.Type getRv_RespiratoryVentilator_Type() {
-        return rv_RespiratoryVentilator_Type == null ? null : EntityLogItem.Type.fromId(rv_RespiratoryVentilator_Type);
-    }
-
-
-    public void setRv_RespiratoryVentilator_Type(EntityLogItem.Type rv_RespiratoryVentilator_Type) {
-        this.rv_RespiratoryVentilator_Type = rv_RespiratoryVentilator_Type == null ? null : rv_RespiratoryVentilator_Type.getId();
-    }
 }

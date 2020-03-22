@@ -1,0 +1,88 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="table"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.respiratoryventilator">
+    <data>
+        <collection id="respiratoryVentilatorsDc"
+                    class="de.wirvsvirus.heatmapressources.entity.hospital.RespiratoryVentilator"
+                    view="_local">
+            <loader id="respiratoryVentilatorsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_RespiratoryVentilator e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="respiratoryVentilatorDc"
+                  class="de.wirvsvirus.heatmapressources.entity.hospital.RespiratoryVentilator"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <filter id="filter" applyTo="table" dataLoader="respiratoryVentilatorsDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%"
+                            dataContainer="respiratoryVentilatorsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="rv_RespiratoryVentilator_ModellNo"/>
+                        <column id="rv_RespiratoryVentilator_Type"/>
+                        <column id="rv_RespiratoryVentilator_Manufacturer"/>
+                        <column id="rv_RespiratoryVentilator_Protable"/>
+                        <column id="rv_RespiratoryVentilator_MaxPatients"/>
+                        <column id="rv_RespiratoryVentilator_Description"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="table.create"/>
+                        <button id="editBtn" action="table.edit"/>
+                        <button id="removeBtn" action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <form id="form" dataContainer="respiratoryVentilatorDc">
+                        <column width="250px">
+                            <textField id="rv_RespiratoryVentilator_ModellNoField"
+                                       property="rv_RespiratoryVentilator_ModellNo"/>
+                            <textField id="rv_RespiratoryVentilator_TypeField"
+                                       property="rv_RespiratoryVentilator_Type"/>
+                            <textField id="rv_RespiratoryVentilator_ManufacturerField"
+                                       property="rv_RespiratoryVentilator_Manufacturer"/>
+                            <checkBox id="rv_RespiratoryVentilator_ProtableField"
+                                      property="rv_RespiratoryVentilator_Protable"/>
+                            <textField id="rv_RespiratoryVentilator_MaxPatientsField"
+                                       property="rv_RespiratoryVentilator_MaxPatients"/>
+                            <textField id="rv_RespiratoryVentilator_DescriptionField"
+                                       property="rv_RespiratoryVentilator_Description"/>
+                        </column>
+                    </form>
+                </scrollBox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

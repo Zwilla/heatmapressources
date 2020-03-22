@@ -1,0 +1,7 @@
+-- alter table HEATMAPRESSOURCES_COUNTRY add column C_EMERGENCY_CONTACT_ID varchar(36) ^
+-- update HEATMAPRESSOURCES_COUNTRY set C_EMERGENCY_CONTACT_ID = <default_value> ;
+-- alter table HEATMAPRESSOURCES_COUNTRY alter column C_EMERGENCY_CONTACT_ID set not null ;
+alter table HEATMAPRESSOURCES_COUNTRY add column C_EMERGENCY_CONTACT_ID varchar(36) not null ;
+alter table HEATMAPRESSOURCES_COUNTRY add column C_EMERGENCY_WEBSITE varchar(512) ^
+update HEATMAPRESSOURCES_COUNTRY set C_EMERGENCY_WEBSITE = '' where C_EMERGENCY_WEBSITE is null ;
+alter table HEATMAPRESSOURCES_COUNTRY alter column C_EMERGENCY_WEBSITE set not null ;

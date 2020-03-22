@@ -6,7 +6,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|description")
+@NamePattern("%s|hospital_PatientRoom")
 @Table(name = "HEATMAPRESSOURCES_HOSPITAL_PATIENT_ROOM")
 @Entity(name = "heatmapressources_HospitalPatientRoom")
 public class HospitalPatientRoom extends StandardEntity {
@@ -19,7 +19,7 @@ public class HospitalPatientRoom extends StandardEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "HOSPITAL_PATIENT_ROOM_ID")
-    protected HospitalPatientRoom hospital_PatientRoom;
+    protected Hospital hospital_PatientRoom;
 
     @NotNull(message = "{msg://heatmapressources_HospitalPatientRoom.hpr_intensiveCareRoomNumber.validation.NotNull}")
     @Column(name = "HPR_INTENSIVE_CARE_ROOM_NUMBER", nullable = false)
@@ -29,8 +29,32 @@ public class HospitalPatientRoom extends StandardEntity {
     @Column(name = "HPR_RESPIRATORY_VENTILATOR", nullable = false)
     protected Boolean hpr_RespiratoryVentilator = false;
 
+    @Lob
+    @Column(name = "HPR_RESSOURCES")
+    protected String hpr_ressources;
+
     @Column(name = "DESCRIPTION", nullable = false)
     protected String description;
+
+
+    public void setHospital_PatientRoom(Hospital hospital_PatientRoom) {
+        this.hospital_PatientRoom = hospital_PatientRoom;
+    }
+
+
+    public Hospital getHospital_PatientRoom() {
+        return hospital_PatientRoom;
+    }
+
+
+    public String getHpr_ressources() {
+        return hpr_ressources;
+    }
+
+
+    public void setHpr_ressources(String hpr_ressources) {
+        this.hpr_ressources = hpr_ressources;
+    }
 
 
     public void setHpr_intensiveCareRoom(Boolean hpr_intensiveCareRoom) {
@@ -50,16 +74,6 @@ public class HospitalPatientRoom extends StandardEntity {
 
     public void setHpr_RespiratoryVentilator(Boolean hpr_RespiratoryVentilator) {
         this.hpr_RespiratoryVentilator = hpr_RespiratoryVentilator;
-    }
-
-
-    public HospitalPatientRoom getHospital_PatientRoom() {
-        return hospital_PatientRoom;
-    }
-
-
-    public void setHospital_PatientRoom(HospitalPatientRoom hospital_PatientRoom) {
-        this.hospital_PatientRoom = hospital_PatientRoom;
     }
 
 

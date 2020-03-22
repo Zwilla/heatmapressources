@@ -2,13 +2,10 @@ package de.wirvsvirus.heatmapressources.entity.administration;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Lookup;
-import com.haulmont.cuba.core.entity.annotation.LookupType;
-import com.haulmont.cuba.security.entity.Group;
-import com.haulmont.cuba.security.entity.Role;
-import com.haulmont.cuba.security.entity.UserSubstitution;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -22,60 +19,54 @@ public class Users extends StandardEntity {
     @Column(name = "FIRSTNAME", nullable = false)
     protected String firstName;
 
-    @Column(name = "LAST_NAME")
+    @NotNull
+    @Column(name = "LAST_NAME", nullable = false)
     protected String lastName;
 
-    @Email(message = "{msg://heatmapressources_Users.email.validation.Email}")
+    @Email
     @NotNull
     @Column(name = "EMAIL", nullable = false, unique = true)
     protected String email;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = {})
+    @Column(name = "USER_RIGHTS_GROUP")
+    protected String userRights_Group;
+
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "USER_RIGHTS_GROUP_ID")
-    protected Group userRights_Group;
+    @Column(name = "USER_RIGHTS_ROLE", nullable = false)
+    protected String userRights_Role;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "USER_RIGHTS_ROLE_ID")
-    protected Role userRights_Role;
-
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "USER_RIGHTS_SUBSTITUTION_ID")
-    protected UserSubstitution userRights_Substitution;
+    @Column(name = "USER_RIGHTS_SUBSTITUTION", nullable = false)
+    protected String userRights_Substitution;
 
 
-    public UserSubstitution getUserRights_Substitution() {
-        return userRights_Substitution;
-    }
-
-
-    public void setUserRights_Substitution(UserSubstitution userRights_Substitution) {
-        this.userRights_Substitution = userRights_Substitution;
-    }
-
-
-    public Role getUserRights_Role() {
-        return userRights_Role;
-    }
-
-
-    public void setUserRights_Role(Role userRights_Role) {
-        this.userRights_Role = userRights_Role;
-    }
-
-
-    public Group getUserRights_Group() {
+    public String getUserRights_Group() {
         return userRights_Group;
     }
 
 
-    public void setUserRights_Group(Group userRights_Group) {
+    public void setUserRights_Group(String userRights_Group) {
         this.userRights_Group = userRights_Group;
+    }
+
+
+    public void setUserRights_Role(String userRights_Role) {
+        this.userRights_Role = userRights_Role;
+    }
+
+
+    public String getUserRights_Role() {
+        return userRights_Role;
+    }
+
+
+    public void setUserRights_Substitution(String userRights_Substitution) {
+        this.userRights_Substitution = userRights_Substitution;
+    }
+
+
+    public String getUserRights_Substitution() {
+        return userRights_Substitution;
     }
 
 

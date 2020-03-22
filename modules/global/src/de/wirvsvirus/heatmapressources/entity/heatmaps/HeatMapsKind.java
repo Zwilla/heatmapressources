@@ -1,5 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.heatmaps;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|heatMaps_KindName")
 @Table(name = "HEATMAPRESSOURCES_HEAT_MAPS_KIND")
 @Entity(name = "heatmapressources_HeatMapsKind")
 public class HeatMapsKind extends StandardEntity {

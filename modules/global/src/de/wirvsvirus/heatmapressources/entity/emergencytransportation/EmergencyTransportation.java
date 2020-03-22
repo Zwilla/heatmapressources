@@ -2,16 +2,29 @@ package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "HEATMAPRESSOURCES_EMERGENCY_TRANSPORTATION")
 @Entity(name = "heatmapressources_EmergencyTransportation")
 public class EmergencyTransportation extends StandardEntity {
     private static final long serialVersionUID = 4436786865647325428L;
+
+    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ET_CONTROL_CENTER_ID")
+    protected ControlCenter et_ControlCenter;
 
     @Column(name = "ET_AMBULANCE_UUID", length = 512)
     protected String et_Ambulance_UUID;
@@ -25,6 +38,16 @@ public class EmergencyTransportation extends StandardEntity {
 
     @Column(name = "ET_TRACKING_SOURCE", length = 512)
     protected String et_tracking_source;
+
+
+    public ControlCenter getEt_ControlCenter() {
+        return et_ControlCenter;
+    }
+
+
+    public void setEt_ControlCenter(ControlCenter et_ControlCenter) {
+        this.et_ControlCenter = et_ControlCenter;
+    }
 
 
     public String getEt_tracking_source() {

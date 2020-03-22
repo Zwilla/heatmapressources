@@ -18,7 +18,6 @@ buildscript {
         }
         jcenter()
 
-        
     }
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
@@ -39,7 +38,7 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'de.wirvsvirus.heatmapressources'
-        version = '0.1'
+        version = '0.2'
         isSnapshot = true
     }
 }
@@ -52,6 +51,7 @@ dependencies {
     appComponent('com.haulmont.addon.dashboard:dashboard-global:3.2.1')
     appComponent("com.haulmont.charts:charts-global:$cubaVersion")
     appComponent('com.haulmont.addon.maps:maps-global:1.2.0.trial')
+    appComponent('com.haulmont.addon.globalevents:cubaglevt-global:0.6.0')
 }
 
 def hsql = 'org.hsqldb:hsqldb:2.4.1'
@@ -69,7 +69,7 @@ configure([globalModule, coreModule, webModule, webToolkitModule]) {
 
     task sourceJar(type: Jar) {
         from file('src')
-        classifier = 'sources'
+        archiveClassifier = 'sources'
     }
 
     artifacts {
@@ -146,7 +146,7 @@ configure(webModule) {
     task webArchive(type: Zip) {
         from file("$buildDir/web")
         from file('web')
-        classifier = 'web'
+        archiveClassifier = 'web'
     }
 
     artifacts {
@@ -172,6 +172,21 @@ configure(webModule) {
         appName = "${modulePrefix}"
         appJars(modulePrefix + '-global', modulePrefix + '-web')
     }
+
+    task buildScssThemes(type: CubaWebScssThemeCreation)
+
+    task deployThemes(type: CubaDeployThemeTask, dependsOn: buildScssThemes)
+
+    assemble.dependsOn buildScssThemes
+
+    task themesJar(type: Jar) {
+        from file('themes')
+        archiveClassifier = 'themes'
+    }
+
+    artifacts {
+        archives themesJar
+    }
 }
 
 configure(webToolkitModule) {
@@ -193,7 +208,7 @@ configure(webToolkitModule) {
 
     task webArchive(dependsOn: buildWidgetSet, type: Jar) {
         from file("$buildDir/web")
-        classifier = 'client'
+        archiveClassifier = 'client'
     }
 
     artifacts {

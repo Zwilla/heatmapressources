@@ -19,7 +19,7 @@ public class HeatmapressourcesTestContainer extends TestContainer {
                 // List the files defined in your web.xml
                 // in appPropertiesConfig context parameter of the core module
                 "de/wirvsvirus/heatmapressources/app.properties",
-                // Add this file which is located in CUBA and defines some properties
+                // Add this file which is located in WirVsVirus and defines some properties
                 // specifically for test environment. You can replace it with your own
                 // or add another one in the end.
                 "de/wirvsvirus/heatmapressources/test-app.properties");

@@ -1,0 +1,76 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="table"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.controlcenter">
+    <data>
+        <collection id="controlCentersDc"
+                    class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter"
+                    view="_local">
+            <loader id="controlCentersDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_ControlCenter e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="controlCenterDc"
+                  class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <filter id="filter" applyTo="table" dataLoader="controlCentersDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%"
+                            dataContainer="controlCentersDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="cc_Name"/>
+                        <column id="cc_Contact"/>
+                        <column id="cc_MainTrackingSources"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="table.create"/>
+                        <button id="editBtn" action="table.edit"/>
+                        <button id="removeBtn" action="table.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <form id="form" dataContainer="controlCenterDc">
+                        <column width="250px">
+                            <textField id="cc_NameField" property="cc_Name"/>
+                            <textField id="cc_ContactField" property="cc_Contact"/>
+                            <textField id="cc_MainTrackingSourcesField" property="cc_MainTrackingSources"/>
+                        </column>
+                    </form>
+                </scrollBox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

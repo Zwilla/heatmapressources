@@ -1,6 +1,12 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import de.wirvsvirus.heatmapressources.entity.locations.Humans;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,9 +18,22 @@ import java.util.UUID;
 public class Patients extends StandardEntity {
     private static final long serialVersionUID = 6342251854696582549L;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @JoinColumn(name = "PATIENT_HUMAN_ID")
+    protected Humans patient_Human;
+
     @NotNull
     @Column(name = "PATIENT_NUMBER", nullable = false, unique = true)
     protected UUID patient_Number;
+
+    @NotNull
+    @Lob
+    @Column(name = "P_DISEASE", nullable = false)
+    protected String patient_Disease;
 
     @Column(name = "PATIENT_UNIQUE_IDENTITY_NUMBER")
     protected String patient_UniqueIdentityNumber;
@@ -35,6 +54,26 @@ public class Patients extends StandardEntity {
     @NotNull
     @Column(name = "PATIENT_FRIST_NAME", nullable = false)
     protected String patient_FristName;
+
+
+    public Humans getPatient_Human() {
+        return patient_Human;
+    }
+
+
+    public void setPatient_Human(Humans patient_Human) {
+        this.patient_Human = patient_Human;
+    }
+
+
+    public String getPatient_Disease() {
+        return patient_Disease;
+    }
+
+
+    public void setPatient_Disease(String patient_Disease) {
+        this.patient_Disease = patient_Disease;
+    }
 
 
     public String getPatient_EmergencyContact() {

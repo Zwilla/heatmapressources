@@ -58,5 +58,8 @@
         <entity class="de.wirvsvirus.heatmapressources.entity.humanresources.MedicalProfessionals">
             <include re=".*"/>
         </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.emergencytransportation.Emergency_Helicopter">
+            <include re=".*"/>
+        </entity>
     </entities>
 </fts-config>

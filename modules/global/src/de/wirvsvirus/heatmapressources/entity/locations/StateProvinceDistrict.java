@@ -17,13 +17,6 @@ import javax.validation.constraints.NotNull;
 public class StateProvinceDistrict extends StandardEntity {
     private static final long serialVersionUID = 2196335995511162872L;
 
-    @NotNull
-    @Column(name = "STATE_PROVINCE_DISTRICT_NAME", nullable = false, unique = true)
-    protected String stateProvinceDistrictName;
-
-    @Column(name = "DESCRIPTION")
-    protected String description;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @NotNull
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
@@ -31,6 +24,31 @@ public class StateProvinceDistrict extends StandardEntity {
     @OnDelete(DeletePolicy.DENY)
     @JoinColumn(name = "COUNTRY_NAME_ID")
     protected StateProvinceDistrict countryName;
+
+    @NotNull
+    @Column(name = "STATE_PROVINCE_DISTRICT_NAME", nullable = false, unique = true)
+    protected String stateProvinceDistrictName;
+
+    @Column(name = "DESCRIPTION")
+    protected String description;
+
+    @Lookup(type = LookupType.SCREEN, actions = "lookup")
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "SPD_EMERGENCY_CONTACT_ID")
+    protected Humans spd_EmergencyContact;
+
+
+    public Humans getSpd_EmergencyContact() {
+        return spd_EmergencyContact;
+    }
+
+
+    public void setSpd_EmergencyContact(Humans spd_EmergencyContact) {
+        this.spd_EmergencyContact = spd_EmergencyContact;
+    }
 
 
     public String getDescription() {

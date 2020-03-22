@@ -3,11 +3,15 @@ package de.wirvsvirus.heatmapressources.entity.hospital;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|description")
@@ -15,6 +19,14 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "heatmapressources_Hospital")
 public class Hospital extends StandardEntity {
     private static final long serialVersionUID = -4041177584120992422L;
+
+    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "H_CONTROL_CENTER_ID")
+    protected ControlCenter h_ControlCenter;
 
     @NotNull
     @Column(name = "HOSPITAL_NAME", nullable = false)
@@ -41,6 +53,16 @@ public class Hospital extends StandardEntity {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     protected String description;
+
+
+    public ControlCenter getH_ControlCenter() {
+        return h_ControlCenter;
+    }
+
+
+    public void setH_ControlCenter(ControlCenter h_ControlCenter) {
+        this.h_ControlCenter = h_ControlCenter;
+    }
 
 
     public Point getLocation() {

@@ -1,0 +1,12 @@
+/* Override global theme constants or define new ones here */
+
+.hover.v-app,
+.hover.v-app-loading {
+  font: 400 14px/1.55 "Open Sans",sans-serif;
+  color: #262626;
+  background-color: #52aa4b;
+  cursor: default;
+}
+
+$v-app-background-color: #52aa4b;
+
