@@ -401,3 +401,36 @@ create table HEATMAPRESSOURCES_EMERGENCY_HELICOPTER (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_EMERGENCY_HELICOPTER
+-- begin HEATMAPRESSOURCES_TRACKING_WHAT
+create table HEATMAPRESSOURCES_TRACKING_WHAT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    GR_TRACKING_THIS varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_TRACKING_WHAT
+-- begin HEATMAPRESSOURCES_GLOBAL_RESOURCES
+create table HEATMAPRESSOURCES_GLOBAL_RESOURCES (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    GR_TRACKING_WHAT_ID varchar(36) not null,
+    GR_TRACKING_URL varchar(512) not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_GLOBAL_RESOURCES

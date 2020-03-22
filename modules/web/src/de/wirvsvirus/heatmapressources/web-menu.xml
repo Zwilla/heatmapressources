@@ -18,5 +18,6 @@
         <item screen="heatmapressources_Humans.browse"/>
         <item screen="heatmapressources_StateProvinceDistrict.browse"/>
         <item screen="heatmapressources_GlobalResources.browse"/>
+        <item screen="heatmapressources_TrackingWhat.browse"/>
     </menu>
 </menu-config>
