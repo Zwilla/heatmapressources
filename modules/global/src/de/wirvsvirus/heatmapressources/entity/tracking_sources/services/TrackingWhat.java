@@ -1,5 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.tracking_sources.services;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|gr_Tracking_This")
 @Table(name = "HEATMAPRESSOURCES_TRACKING_WHAT")
 @Entity(name = "heatmapressources_TrackingWhat")
 public class TrackingWhat extends StandardEntity {

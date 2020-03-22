@@ -1,5 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.tracking_sources.services;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -10,6 +11,7 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s %s|gr_TrackingWhat,gr_Tracking_URL")
 @Table(name = "HEATMAPRESSOURCES_GLOBAL_RESOURCES")
 @Entity(name = "heatmapressources_GlobalResources")
 public class GlobalResources extends StandardEntity {

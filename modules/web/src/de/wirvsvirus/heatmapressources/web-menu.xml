@@ -19,5 +19,9 @@
         <item screen="heatmapressources_StateProvinceDistrict.browse"/>
         <item screen="heatmapressources_GlobalResources.browse"/>
         <item screen="heatmapressources_TrackingWhat.browse"/>
+        <separator/>
+        <item screen="heatmapressources_ScreenHeatmapsGlobal"/>
+        <item screen="heatmapressources_HeatMapsKind.browse"/>
+        <item screen="heatmapressources_ScreenHeatmapsGlobalAll"/>
     </menu>
 </menu-config>
