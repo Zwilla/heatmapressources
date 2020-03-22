@@ -70,5 +70,8 @@
         <entity class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G">
             <include re=".*"/>
         </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.heatmaps.LayerWrapper">
+            <include re=".*"/>
+        </entity>
     </entities>
 </fts-config>

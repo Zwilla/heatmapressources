@@ -1,0 +1,2 @@
+alter table HEATMAPRESSOURCES_CONTROL_CENTER add column LOCATION VARCHAR(100) ^
+alter table HEATMAPRESSOURCES_CONTROL_CENTER alter column LOCATION set not null ;

@@ -1,5 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
+@NamePattern("%s|patient_UniqueIdentityNumber")
 @Table(name = "HEATMAPRESSOURCES_PATIENTS")
 @Entity(name = "heatmapressources_Patients")
 public class Patients extends StandardEntity {

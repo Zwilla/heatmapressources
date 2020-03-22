@@ -12,7 +12,7 @@
             </loader>
         </collection>
 
-        <collection id="hospitalDc" class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital" view="_local">
+        <collection id="mapHospitalsDc" class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital" view="_local">
             <loader id="hospitalDl">
                 <query>
                     <![CDATA[select e from heatmapressources_Hospital e]]>
@@ -20,19 +20,29 @@
             </loader>
         </collection>
 
+        <collection id="layersDc" class="de.wirvsvirus.heatmapressources.entity.LayerWrapper" view="_local">
+            <loader id="layersLoader"/>
+        </collection>
+
     </data>
 
-    <layout>
+    <layout spacing="true" expand="mainMap">
+        <tokenList id="layersForHeatmaps"
+                   caption="Layers for the heat map"
+                   inline="true" clearEnabled="false">
+            <lookup multiselect="true" optionsContainer="layersDc"/>
+        </tokenList>
+
         <maps:geoMap width="100%" height="100%" id="mainMap" center="8.4964812, 50.1211277">
 
-            <maps:layers selectedLayer="casesLayer">
+            <maps:layers selectedLayer="humansLayer">
                 <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
 
-                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GsDc">
+                <maps:vector id="humansLayer" dataContainer="heatMap_Humans5GsDc">
                     <maps:cluster/>
                 </maps:vector>
 
-                <maps:vector id="hospitalsLayer" dataContainer="hospitalDc"/>
+                <maps:vector id="humanLayer" dataContainer="mapHospitalsDc"/>
 
             </maps:layers>
 

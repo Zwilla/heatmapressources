@@ -1,5 +1,7 @@
 package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
@@ -23,10 +25,14 @@ public class Emergency_Helicopter extends StandardEntity {
     protected String eh_Emergency_Helicopter_UUID;
 
     @NotNull
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint", mandatory = true)
     @Column(name = "EH_LOCATION_HOME", nullable = false)
     protected Point eh_location_home;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "EH_LOCATION_TRACKING")
     protected Point eh_location_tracking;

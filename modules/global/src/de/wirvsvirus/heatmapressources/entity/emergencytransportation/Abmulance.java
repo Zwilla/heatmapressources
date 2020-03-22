@@ -1,5 +1,7 @@
 package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
@@ -26,6 +28,8 @@ public class Abmulance extends StandardEntity {
     @JoinColumn(name = "ET_CONTROL_CENTER_ID")
     protected ControlCenter et_ControlCenter;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "A_LOCATION")
     protected Point a_Location;

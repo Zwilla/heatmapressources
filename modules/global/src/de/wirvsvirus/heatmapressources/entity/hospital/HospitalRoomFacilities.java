@@ -1,5 +1,7 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
@@ -24,10 +26,14 @@ public class HospitalRoomFacilities extends StandardEntity {
     @JoinColumn(name = "RV_RESPIRATORY_VENTILATOR_ID")
     protected RespiratoryVentilator rv_RespiratoryVentilator;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HRF_LOCATION_TRACKING")
     protected Point hrf_location_tracking;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HRF_LOCATION_TRACKING_SOURCE")
     protected Point hrf_location_tracking_source;

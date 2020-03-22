@@ -1,5 +1,8 @@
 package de.wirvsvirus.heatmapressources.entity.locations;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
@@ -7,11 +10,12 @@ import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|ct_description")
+@NamePattern("%s|ct_Country")
 @Table(name = "HEATMAPRESSOURCES_CITY_TOWN")
 @Entity(name = "heatmapressources_CityTown")
 public class CityTown extends StandardEntity {
@@ -24,6 +28,12 @@ public class CityTown extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CT_COUNTRY_ID")
     protected Country ct_Country;
+
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
+    @MetaProperty(datatype = "GeoPoint")
+    @Column(name = "CT_LOCATION")
+    protected Point ct_location;
 
     @NotNull
     @Column(name = "CITY_NAME", nullable = false)
@@ -54,6 +64,16 @@ public class CityTown extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CT_EMERGENCY_CONTACT_ID")
     protected Humans ct_EmergencyContact;
+
+
+    public Point getCt_location() {
+        return ct_location;
+    }
+
+
+    public void setCt_location(Point ct_location) {
+        this.ct_location = ct_location;
+    }
 
 
     public Country getCt_Country() {

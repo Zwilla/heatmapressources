@@ -192,12 +192,14 @@ create table HEATMAPRESSOURCES_RESPIRATORY_VENTILATOR (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    RV_RESPIRATORY_VENTILATOR_SERIAL_NO varchar(255) not null,
     RV_RESPIRATORY_VENTILATOR_MODELL_NO varchar(255) not null,
     RV_RESPIRATORY_VENTILATOR_TYPE varchar(255) not null,
     RV_RESPIRATORY_VENTILATOR_MANUFACTURER varchar(255) not null,
     RV_RESPIRATORY_VENTILATOR_PROTABLE boolean,
     RV_RESPIRATORY_VENTILATOR_MAX_PATIENTS integer not null,
     RV_RESPIRATORY_VENTILATOR_DESCRIPTION varchar(2000) not null,
+    RV_LOCATION VARCHAR(100),
     --
     primary key (ID)
 )^
@@ -253,6 +255,7 @@ create table HEATMAPRESSOURCES_CITY_TOWN (
     DELETED_BY varchar(50),
     --
     CT_COUNTRY_ID varchar(36) not null,
+    CT_LOCATION VARCHAR(100),
     CITY_NAME varchar(255) not null,
     DESCRIPTION varchar(255),
     CT_ZIP_CODE varchar(255) not null,
@@ -274,8 +277,9 @@ create table HEATMAPRESSOURCES_CONTROL_CENTER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CC_CITY_ID varchar(36) not null,
     CC_NAME varchar(255) not null,
+    CC_CITY_ID varchar(36) not null,
+    LOCATION VARCHAR(100) not null,
     CC_CONTACT varchar(255),
     CC_MAIN_TRACKING_SOURCES varchar(512),
     --
@@ -294,6 +298,7 @@ create table HEATMAPRESSOURCES_HOSPITAL (
     DELETED_BY varchar(50),
     --
     H_CONTROL_CENTER_ID varchar(36) not null,
+    H_ADDRESS longvarchar,
     HOSPITAL_NAME varchar(255) not null,
     LOCATION VARCHAR(100),
     H_MAX_ROOMS integer not null,
@@ -454,3 +459,13 @@ create table HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G
+-- begin HEATMAPRESSOURCES_LAYER_WRAPPER
+create table HEATMAPRESSOURCES_LAYER_WRAPPER (
+    ID varchar(36) not null,
+    --
+    NAME longvarchar not null,
+    DATACONTAINERID longvarchar not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_LAYER_WRAPPER

@@ -1,5 +1,7 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
@@ -14,7 +16,7 @@ import org.locationtech.jts.geom.Point;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|description")
+@NamePattern("%s|hospitalName")
 @Table(name = "HEATMAPRESSOURCES_HOSPITAL")
 @Entity(name = "heatmapressources_Hospital")
 public class Hospital extends StandardEntity {
@@ -28,10 +30,16 @@ public class Hospital extends StandardEntity {
     @JoinColumn(name = "H_CONTROL_CENTER_ID")
     protected ControlCenter h_ControlCenter;
 
+    @Lob
+    @Column(name = "H_ADDRESS")
+    protected String h_address;
+
     @NotNull
     @Column(name = "HOSPITAL_NAME", nullable = false)
     protected String hospitalName;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "LOCATION")
     protected Point location;
@@ -53,6 +61,16 @@ public class Hospital extends StandardEntity {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     protected String description;
+
+
+    public String getH_address() {
+        return h_address;
+    }
+
+
+    public void setH_address(String h_address) {
+        this.h_address = h_address;
+    }
 
 
     public ControlCenter getH_ControlCenter() {
