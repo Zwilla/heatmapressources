@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="heatMap_Humans5GsTable"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.heatmap_humans5g">
+    <data readOnly="true">
+        <collection id="heatMap_Humans5GsDc"
+                    class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G"
+                    >
+            <view extends="_local"/>
+            <loader id="heatMap_Humans5GsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_HeatMap_Humans5G e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="heatMap_Humans5GsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="heatMap_Humans5GsTable"
+                dataLoader="heatMap_Humans5GsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="heatMap_Humans5GsTable"
+                    width="100%"
+                    dataContainer="heatMap_Humans5GsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="hm_Imei"/>
+                <column id="hmH_Location"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="heatMap_Humans5GsTable.create"/>
+                <button id="editBtn" action="heatMap_Humans5GsTable.edit"/>
+                <button id="removeBtn" action="heatMap_Humans5GsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

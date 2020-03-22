@@ -24,5 +24,6 @@
         <class>de.wirvsvirus.heatmapressources.entity.emergencytransportation.Emergency_Helicopter</class>
         <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.GlobalResources</class>
         <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.TrackingWhat</class>
+        <class>de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G</class>
     </persistence-unit>
 </persistence>

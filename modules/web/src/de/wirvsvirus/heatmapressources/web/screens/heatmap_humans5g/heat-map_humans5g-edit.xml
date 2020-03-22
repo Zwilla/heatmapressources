@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.heatmap_humans5g">
+    <data>
+        <instance id="heatMap_Humans5GDc"
+                  class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="heatMap_Humans5GDc">
+            <column width="250px">
+                <textField id="hm_ImeiField" property="hm_Imei"/>
+                <textField id="hmH_LocationField" property="hmH_Location"/>
+            </column>
+        </form>
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="casesMap" width="500px" height="500px">
+            <maps:layers selectedLayer="casesLayer">
+                <maps:tile id="tiles"
+                           tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GDc" editable="true"/>
+            </maps:layers>
+        </maps:geoMap>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

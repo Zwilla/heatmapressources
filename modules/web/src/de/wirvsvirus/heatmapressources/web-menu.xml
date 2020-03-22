@@ -26,5 +26,7 @@
         <item screen="heatmapressources_ScreenHeatmapsGlobal"/>
         <item screen="heatmapressources_HeatMapsKind.browse"/>
         <item screen="heatmapressources_ScreenHeatmapsGlobalAll"/>
+        <item screen="heatmapressources_ScreenHumans5g"/>
+        <item screen="heatmapressources_HeatMap_Humans5G.browse"/>
     </menu>
 </menu-config>

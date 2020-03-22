@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://caption"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.dashbord">
+    <data>
+        <collection id="heatMap_Humans5GsDc" class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G" view="_local">
+            <loader id="heatMap_Humans5GsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_HeatMap_Humans5G e]]>
+                </query>
+            </loader>
+        </collection>
+
+        <collection id="hospitalDc" class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital" view="_local">
+            <loader id="hospitalDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Hospital e]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+
+    <layout>
+        <maps:geoMap width="100%" height="100%" id="mainMap" center="8.4964812, 50.1211277">
+
+            <maps:layers selectedLayer="casesLayer">
+                <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
+
+                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GsDc">
+                    <maps:cluster/>
+                </maps:vector>
+
+                <maps:vector id="hospitalsLayer" dataContainer="hospitalDc"/>
+
+            </maps:layers>
+
+        </maps:geoMap>
+
+    </layout>
+</window>
