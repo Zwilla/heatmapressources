@@ -32,6 +32,9 @@ create table HEATMAPRESSOURCES_HEAT_MAPS_ALL (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    HM_KIND_OF_ID varchar(36) not null,
+    HM_DESCRIPTION varchar(255) not null,
+    --
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_HEAT_MAPS_ALL
