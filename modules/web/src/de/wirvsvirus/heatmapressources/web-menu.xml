@@ -5,6 +5,7 @@
         <item screen="heatmapressources_Abmulance.browse"/>
         <item screen="heatmapressources_Emergency_Helicopter.browse"/>
         <item screen="heatmapressources_EmergencyTransportation.browse"/>
+        <separator/>
         <item screen="heatmapressources_Hospital.browse"/>
         <item screen="heatmapressources_Contacts.browse"/>
         <item screen="heatmapressources_HospitalContacts.browse"/>
@@ -13,10 +14,12 @@
         <item screen="heatmapressources_Patients.browse"/>
         <item screen="heatmapressources_RespiratoryVentilator.browse"/>
         <item screen="heatmapressources_MedicalProfessionals.browse"/>
+        <separator/>
         <item screen="heatmapressources_CityTown.browse"/>
         <item screen="heatmapressources_Country.browse"/>
         <item screen="heatmapressources_Humans.browse"/>
         <item screen="heatmapressources_StateProvinceDistrict.browse"/>
+        <separator/>
         <item screen="heatmapressources_GlobalResources.browse"/>
         <item screen="heatmapressources_TrackingWhat.browse"/>
         <separator/>
