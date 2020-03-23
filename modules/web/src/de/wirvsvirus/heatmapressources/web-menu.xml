@@ -5,6 +5,7 @@
         <item screen="heatmapressources_GlobalResources.browse" icon="ANCHOR"/>
         <item screen="heatmapressources_TrackingWhat.browse" icon="GEAR"/>
         <item screen="heatmapressources_Things.browse" icon="GEARS"/>
+        <item screen="heatmapressources_AboutTracking.browse" icon="BINOCULARS"/>
     </menu>
 
     <menu id="location" insertBefore="administration" expanded="true" icon="MAP_PIN">
@@ -14,7 +15,7 @@
         <item screen="heatmapressources_Humans.browse" icon="FEMALE"/>
     </menu>
 
-    <menu id="maps" insertBefore="administration" icon="MAP" description="Maps view and edi">
+    <menu id="maps" insertBefore="administration" icon="MAP" description="Maps view and edit">
         <item screen="covid_MapScreen" caption="MapScreen" icon="MAP_O"/>
         <item screen="heatmapressources_ScreenHeatmapsGlobal" icon="MAP_O"/>
         <item screen="heatmapressources_HeatMapsKind.browse" icon="MAP_O"/>

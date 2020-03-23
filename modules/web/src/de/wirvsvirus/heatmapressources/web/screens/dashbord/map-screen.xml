@@ -13,14 +13,14 @@
         </collection>
 
         <collection id="mapHospitalsDc" class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital" view="_local">
-            <loader id="hospitalDl">
+            <loader id="hospitalsDl">
                 <query>
                     <![CDATA[select e from heatmapressources_Hospital e]]>
                 </query>
             </loader>
         </collection>
 
-        <collection id="layersDc" class="de.wirvsvirus.heatmapressources.entity.LayerWrapper" view="_local">
+        <collection id="layersDc" class="de.wirvsvirus.heatmapressources.entity.heatmaps.LayerWrapper" view="_local">
             <loader id="layersLoader"/>
         </collection>
 
@@ -42,7 +42,7 @@
                     <maps:cluster/>
                 </maps:vector>
 
-                <maps:vector id="humanLayer" dataContainer="mapHospitalsDc"/>
+                <maps:vector id="hospitalsLayer" dataContainer="mapHospitalsDc"/>
 
             </maps:layers>
 
