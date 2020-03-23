@@ -11,8 +11,8 @@
             <loader/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="600" width="800"/>
+
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="heatMap_Humans5GDc">
             <column width="250px">

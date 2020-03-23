@@ -71,11 +71,11 @@
                     <button id="saveBtn" action="save"/>
                     <button id="cancelBtn" action="cancel"/>
                 </hbox>
-                <maps:geoMap zoom="7" id="casesMap" width="500px" height="500px">
-                    <maps:layers selectedLayer="casesLayer">
+                <maps:geoMap zoom="7" id="countryMap" width="500px" height="500px">
+                    <maps:layers selectedLayer="countryLayer">
                         <maps:tile id="tiles"
                                    tileProvider="maps_OpenStreetMap"/>
-                        <maps:vector id="casesLayer" dataContainer="countriesDc" editable="true"/>
+                        <maps:vector id="countryLayer" dataContainer="countriesDc" editable="true"/>
                     </maps:layers>
                 </maps:geoMap>
             </vbox>

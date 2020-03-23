@@ -1,4 +1,5 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
+import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
@@ -10,7 +11,7 @@ import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
-import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
+
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;

@@ -6,7 +6,7 @@
     <data>
         <collection id="controlCentersDc"
                     class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter"
-                    view="_local">
+                    view="controlCenter-view">
             <loader id="controlCentersDl">
                 <query>
                     <![CDATA[select e from heatmapressources_ControlCenter e]]>
@@ -15,7 +15,7 @@
         </collection>
         <instance id="controlCenterDc"
                   class="de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter"
-                  view="_local">
+                  view="controlCenter-view_1">
             <loader/>
         </instance>
     </data>
@@ -42,6 +42,7 @@
                         <column id="cc_Name"/>
                         <column id="cc_Contact"/>
                         <column id="cc_MainTrackingSources"/>
+                        <column id="cc_City"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -63,6 +64,7 @@
                             <textField id="cc_NameField" property="cc_Name"/>
                             <textField id="cc_ContactField" property="cc_Contact"/>
                             <textField id="cc_MainTrackingSourcesField" property="cc_MainTrackingSources"/>
+                            <textField id="cc_CityField" property="cc_City"/>
                         </column>
                     </form>
                 </scrollBox>

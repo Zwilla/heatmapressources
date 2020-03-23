@@ -54,7 +54,7 @@
             <maps:layers selectedLayer="casesLayer">
                 <maps:tile id="tiles"
                            tileProvider="maps_OpenStreetMap"/>
-                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GsDc" editable="true"/>
+                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GsDc" editable="false"/>
             </maps:layers>
         </maps:geoMap>
     </layout>

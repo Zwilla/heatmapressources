@@ -16,7 +16,7 @@
         </collection>
         <instance id="hospitalDc"
                   class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital"
-                  view="_local">
+                  view="hospital-view">
             <loader/>
         </instance>
     </data>
@@ -65,13 +65,12 @@
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="hospitalDc">
                         <column width="250px">
+                            <textField id="h_ControlCenterField" property="h_ControlCenter"/>
                             <textField id="hospitalNameField" property="hospitalName"/>
                             <textField id="locationField" property="location"/>
                             <textField id="h_maxRoomsField" property="h_maxRooms"/>
-                            <textField id="h_Rooms_With_RespiratoryVentilatorField"
-                                       property="h_Rooms_With_RespiratoryVentilator"/>
-                            <textField id="h_Rooms_With_RespiratoryVentilator_FreeField"
-                                       property="h_Rooms_With_RespiratoryVentilator_Free"/>
+                            <textField id="h_Rooms_With_RespiratoryVentilatorField" property="h_Rooms_With_RespiratoryVentilator"/>
+                            <textField id="h_Rooms_With_RespiratoryVentilator_FreeField" property="h_Rooms_With_RespiratoryVentilator_Free"/>
                             <textField id="h_IntensiveCareUnitsField" property="h_IntensiveCareUnits"/>
                             <textField id="descriptionField" property="description"/>
                         </column>
@@ -84,10 +83,9 @@
             </vbox>
         </split>
         <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="100%">
-            <maps:layers selectedLayer="casesLayer">
-                <maps:tile id="tiles"
-                           tileProvider="maps_OpenStreetMap"/>
-                <maps:vector id="casesLayer" dataContainer="hospitalsDc" editable="true"/>
+            <maps:layers selectedLayer="mapsLayer">
+                <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="mapsLayer" dataContainer="hospitalsDc" editable="true"/>
             </maps:layers>
         </maps:geoMap>
     </layout>
