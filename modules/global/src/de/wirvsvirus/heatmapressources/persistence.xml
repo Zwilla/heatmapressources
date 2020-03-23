@@ -26,5 +26,6 @@
         <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.TrackingWhat</class>
         <class>de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G</class>
         <class>de.wirvsvirus.heatmapressources.entity.heatmaps.LayerWrapper</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Things</class>
     </persistence-unit>
 </persistence>

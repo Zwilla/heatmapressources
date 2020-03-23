@@ -1,0 +1,89 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="table"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.things">
+    <data>
+        <collection id="thingsesDc"
+                    class="de.wirvsvirus.heatmapressources.entity.locations.Things"
+                    view="_local">
+            <loader id="thingsesDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Things e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="thingsDc"
+                  class="de.wirvsvirus.heatmapressources.entity.locations.Things"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <filter id="filter" applyTo="table" dataLoader="thingsesDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%"
+                            dataContainer="thingsesDc"
+                            multiselect="true"
+                            presentations="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                        <action id="refresh" type="refresh"/>
+                        <action id="excel" type="excel"/>
+                    </actions>
+                    <columns>
+                        <column id="things_Name"/>
+                        <column id="things_UUID"/>
+                        <column id="things_UUID_Tracking"/>
+                        <column id="things_location"/>
+                        <column id="things_TrackingSource"/>
+                        <column id="things_TrackingLocation_API"/>
+                        <column id="things_Kind"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                        <button id="createBtn" action="table.create"/>
+                        <button id="editBtn" action="table.edit"/>
+                        <button id="removeBtn" action="table.remove"/>
+                        <button id="refreshBtn" action="table.refresh"/>
+                        <button id="excelBtn" action="table.excel"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <form id="form" dataContainer="thingsDc">
+                        <column width="250px">
+                            <textField id="things_NameField" property="things_Name"/>
+                            <textField id="things_UUIDField" property="things_UUID"/>
+                            <textField id="things_UUID_TrackingField" property="things_UUID_Tracking"/>
+                            <textField id="things_locationField" property="things_location"/>
+                            <textField id="things_TrackingSourceField" property="things_TrackingSource"/>
+                            <textField id="things_TrackingLocation_APIField" property="things_TrackingLocation_API"/>
+                            <textField id="things_KindField" property="things_Kind"/>
+                        </column>
+                    </form>
+                </scrollBox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

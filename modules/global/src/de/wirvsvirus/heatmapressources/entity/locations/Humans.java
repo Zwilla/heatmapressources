@@ -1,5 +1,7 @@
 package de.wirvsvirus.heatmapressources.entity.locations;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.CaseConversion;
@@ -43,10 +45,14 @@ public class Humans extends StandardEntity {
     @Column(name = "HR_DESCRIPTION")
     protected String hr_Description;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HR_LOCATION")
     protected Point hr_location_Home;
 
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HR_LOCATION_TRACKING")
     protected Point hr_location_Tracking;

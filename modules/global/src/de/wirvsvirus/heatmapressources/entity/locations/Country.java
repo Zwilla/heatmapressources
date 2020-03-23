@@ -1,9 +1,13 @@
 package de.wirvsvirus.heatmapressources.entity.locations;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.*;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,6 +34,22 @@ public class Country extends StandardEntity {
     @NotNull
     @Column(name = "C_EMERGENCY_WEBSITE", nullable = false, length = 512)
     protected String c_EmergencyWebsite;
+
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
+    @MetaProperty(datatype = "GeoPoint")
+    @Column(name = "LOCATION")
+    protected Point location;
+
+
+    public Point getLocation() {
+        return location;
+    }
+
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
 
 
     public String getC_EmergencyWebsite() {
