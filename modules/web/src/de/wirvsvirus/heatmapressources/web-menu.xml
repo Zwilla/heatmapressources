@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
 
-    <menu id="application-heatmapressources" insertBefore="administration">
-        <item screen="heatmapressources_GlobalResources.browse"/>
-        <item screen="heatmapressources_TrackingWhat.browse"/>
-        <item screen="heatmapressources_Things.browse"/>
+    <menu id="application-heatmapressources" insertBefore="administration" icon="font-icon:CLOUD">
+        <item screen="heatmapressources_GlobalResources.browse" icon="ANCHOR"/>
+        <item screen="heatmapressources_TrackingWhat.browse" icon="GEAR"/>
+        <item screen="heatmapressources_Things.browse" icon="GEARS"/>
     </menu>
 
-    <menu id="location" insertBefore="administration">
-        <item screen="heatmapressources_Country.browse"/>
-        <item screen="heatmapressources_CityTown.browse"/>
-        <item screen="heatmapressources_StateProvinceDistrict.browse"/>
-        <item screen="heatmapressources_Humans.browse"/>
+    <menu id="location" insertBefore="administration" expanded="true" icon="MAP_PIN">
+        <item screen="heatmapressources_Country.browse" openType="NEW_TAB" icon="FLAG_CHECKERED"/>
+        <item screen="heatmapressources_CityTown.browse" icon="BUILDING_O"/>
+        <item screen="heatmapressources_StateProvinceDistrict.browse" icon="MAP_SIGNS"/>
+        <item screen="heatmapressources_Humans.browse" icon="FEMALE"/>
     </menu>
 
-    <menu id="maps" insertBefore="administration">
-        <item screen="covid_MapScreen" caption="MapScreen"/>
-        <item screen="heatmapressources_ScreenHeatmapsGlobal"/>
-        <item screen="heatmapressources_HeatMapsKind.browse"/>
-        <item screen="heatmapressources_ScreenHeatmapsGlobalAll"/>
-        <item screen="heatmapressources_HeatMap_Humans5G.browse"/>
+    <menu id="maps" insertBefore="administration" icon="MAP" description="Maps view and edi">
+        <item screen="covid_MapScreen" caption="MapScreen" icon="MAP_O"/>
+        <item screen="heatmapressources_ScreenHeatmapsGlobal" icon="MAP_O"/>
+        <item screen="heatmapressources_HeatMapsKind.browse" icon="MAP_O"/>
+        <item screen="heatmapressources_ScreenHeatmapsGlobalAll" icon="MAP_O"/>
+        <item screen="heatmapressources_HeatMap_Humans5G.browse" shortcut="CTRL-ALT-5" icon="MALE"/>
     </menu>
 
-    <menu id="cc" insertBefore="administration">
-        <item screen="heatmapressources_ControlCenter.browse"/>
-        <item screen="heatmapressources_Abmulance.browse"/>
-        <item screen="heatmapressources_Emergency_Helicopter.browse"/>
-        <item screen="heatmapressources_EmergencyTransportation.browse"/>
+    <menu id="cc" insertBefore="administration" icon="HOME">
+        <item screen="heatmapressources_ControlCenter.browse" shortcut="CTRL-ALT-C" icon="MICROPHONE"/>
+        <item screen="heatmapressources_Abmulance.browse" icon="AMBULANCE"/>
+        <item screen="heatmapressources_Emergency_Helicopter.browse" icon="ROCKET"/>
+        <item screen="heatmapressources_EmergencyTransportation.browse" icon="CAB"/>
     </menu>
 
-    <menu id="hospital" insertBefore="administration">
-        <item screen="heatmapressources_Hospital.browse"/>
-        <item screen="heatmapressources_Contacts.browse"/>
-        <item screen="heatmapressources_HospitalContacts.browse"/>
-        <item screen="heatmapressources_HospitalPatientRoom.browse"/>
-        <item screen="heatmapressources_HospitalRoomFacilities.browse"/>
-        <item screen="heatmapressources_Patients.browse"/>
-        <item screen="heatmapressources_RespiratoryVentilator.browse"/>
-        <item screen="heatmapressources_MedicalProfessionals.browse"/>
+    <menu id="hospital" insertBefore="administration" icon="HOSPITAL_O">
+        <item screen="heatmapressources_Hospital.browse" shortcut="CTRL-ALT-H" icon="HOSPITAL_O"/>
+        <item screen="heatmapressources_HospitalContacts.browse" icon="PHONE"/>
+        <item screen="heatmapressources_Patients.browse" icon="MALE"/>
+
+            <item screen="heatmapressources_RespiratoryVentilator.browse" icon="GEARS"/>
+            <item screen="heatmapressources_HospitalPatientRoom.browse" icon="BED"/>
+            <item screen="heatmapressources_HospitalRoomFacilities.browse" icon="GEARS"/>
+
+
+            <item screen="heatmapressources_MedicalProfessionals.browse" icon="font-icon:HEARTBEAT"/>
+            <item screen="heatmapressources_Contacts.browse" icon="VOLUME_CONTROL_PHONE"/>
+
+
     </menu>
+
 
 </menu-config>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
         caption="msg://browseCaption"
         focusComponent="heatMap_Humans5GsTable"
         messagesPack="de.wirvsvirus.heatmapressources.web.screens.heatmap_humans5g">
@@ -36,10 +37,10 @@
             <columns>
                 <column id="hm_Imei"/>
                 <column id="hmH_Location"/>
+                <column id="has_corona_since"/>
             </columns>
             <rowsCount/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
                 <button id="createBtn" action="heatMap_Humans5GsTable.create"/>
                 <button id="editBtn" action="heatMap_Humans5GsTable.edit"/>
                 <button id="removeBtn" action="heatMap_Humans5GsTable.remove"/>
@@ -49,5 +50,12 @@
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
         </hbox>
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="500px">
+            <maps:layers selectedLayer="casesLayer">
+                <maps:tile id="tiles"
+                           tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GsDc" editable="true"/>
+            </maps:layers>
+        </maps:geoMap>
     </layout>
 </window>

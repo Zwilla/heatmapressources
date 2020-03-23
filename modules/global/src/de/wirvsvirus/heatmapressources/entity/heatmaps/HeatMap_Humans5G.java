@@ -7,11 +7,9 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @NamePattern("%s|hm_Imei")
 @Table(name = "HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G")
@@ -29,6 +27,20 @@ public class HeatMap_Humans5G extends StandardEntity {
     @MetaProperty(datatype = "GeoPoint")
     @Column(name = "HM_H_LOCATION")
     protected Point hmH_Location;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "HAS_CORONA_SINCE")
+    protected Date has_corona_since;
+
+
+    public void setHas_corona_since(Date has_corona_since) {
+        this.has_corona_since = has_corona_since;
+    }
+
+
+    public Date getHas_corona_since() {
+        return has_corona_since;
+    }
 
 
     public Point getHmH_Location() {

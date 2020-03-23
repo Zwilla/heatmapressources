@@ -1,5 +1,6 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
         caption="msg://browseCaption"
         focusComponent="table"
         messagesPack="de.wirvsvirus.heatmapressources.web.screens.country">
@@ -41,6 +42,7 @@
                     <columns>
                         <column id="countryName"/>
                         <column id="c_EmergencyWebsite"/>
+                        <column id="location"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -61,6 +63,7 @@
                         <column width="250px">
                             <textField id="countryNameField" property="countryName"/>
                             <textField id="c_EmergencyWebsiteField" property="c_EmergencyWebsite"/>
+                            <textField id="locationField" property="location"/>
                         </column>
                     </form>
                 </scrollBox>
@@ -68,6 +71,13 @@
                     <button id="saveBtn" action="save"/>
                     <button id="cancelBtn" action="cancel"/>
                 </hbox>
+                <maps:geoMap zoom="7" id="casesMap" width="500px" height="500px">
+                    <maps:layers selectedLayer="casesLayer">
+                        <maps:tile id="tiles"
+                                   tileProvider="maps_OpenStreetMap"/>
+                        <maps:vector id="casesLayer" dataContainer="countriesDc" editable="true"/>
+                    </maps:layers>
+                </maps:geoMap>
             </vbox>
         </split>
     </layout>

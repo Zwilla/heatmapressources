@@ -455,6 +455,7 @@ create table HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G (
     DELETED_BY varchar(50),
     --
     HM_IMEI varchar(255) not null,
+    HAS_CORONA_SINCE timestamp,
     HM_H_LOCATION VARCHAR(100),
     --
     primary key (ID)
