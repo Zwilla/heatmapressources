@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+
     <menu id="application-heatmapressources" insertBefore="administration">
+        <item screen="heatmapressources_GlobalResources.browse"/>
+        <item screen="heatmapressources_TrackingWhat.browse"/>
+
+    </menu>
+
+    <menu id="location" insertBefore="administration">
+        <item screen="heatmapressources_Country.browse"/>
+        <item screen="heatmapressources_CityTown.browse"/>
+        <item screen="heatmapressources_StateProvinceDistrict.browse"/>
+        <item screen="heatmapressources_Humans.browse"/>
+    </menu>
+
+    <menu id="maps" insertBefore="administration">
+        <item screen="heatmapressources_ScreenHeatmapsGlobal"/>
+        <item screen="heatmapressources_HeatMapsKind.browse"/>
+        <item screen="heatmapressources_ScreenHeatmapsGlobalAll"/>
+        <item screen="heatmapressources_HeatMap_Humans5G.browse"/>
+    </menu>
+
+    <menu id="cc" insertBefore="administration">
         <item screen="heatmapressources_ControlCenter.browse"/>
         <item screen="heatmapressources_Abmulance.browse"/>
         <item screen="heatmapressources_Emergency_Helicopter.browse"/>
         <item screen="heatmapressources_EmergencyTransportation.browse"/>
-        <separator/>
+    </menu>
+
+    <menu id="hospital" insertBefore="administration">
         <item screen="heatmapressources_Hospital.browse"/>
         <item screen="heatmapressources_Contacts.browse"/>
         <item screen="heatmapressources_HospitalContacts.browse"/>
@@ -14,19 +37,6 @@
         <item screen="heatmapressources_Patients.browse"/>
         <item screen="heatmapressources_RespiratoryVentilator.browse"/>
         <item screen="heatmapressources_MedicalProfessionals.browse"/>
-        <separator/>
-        <item screen="heatmapressources_CityTown.browse"/>
-        <item screen="heatmapressources_Country.browse"/>
-        <item screen="heatmapressources_Humans.browse"/>
-        <item screen="heatmapressources_StateProvinceDistrict.browse"/>
-        <separator/>
-        <item screen="heatmapressources_GlobalResources.browse"/>
-        <item screen="heatmapressources_TrackingWhat.browse"/>
-        <separator/>
-        <item screen="heatmapressources_ScreenHeatmapsGlobal"/>
-        <item screen="heatmapressources_HeatMapsKind.browse"/>
-        <item screen="heatmapressources_ScreenHeatmapsGlobalAll"/>
-        <item screen="heatmapressources_ScreenHumans5g"/>
-        <item screen="heatmapressources_HeatMap_Humans5G.browse"/>
     </menu>
+
 </menu-config>
