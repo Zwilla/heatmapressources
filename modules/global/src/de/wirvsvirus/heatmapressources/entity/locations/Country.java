@@ -23,14 +23,6 @@ public class Country extends StandardEntity {
     @Column(name = "COUNTRY_NAME", nullable = false, unique = true)
     protected String countryName;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    @OnDelete(DeletePolicy.UNLINK)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "C_EMERGENCY_CONTACT_ID")
-    protected Humans c_EmergencyContact;
-
     @NotNull
     @Column(name = "C_EMERGENCY_WEBSITE", nullable = false, length = 512)
     protected String c_EmergencyWebsite;
@@ -38,17 +30,24 @@ public class Country extends StandardEntity {
     @Geometry
     @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
-    @Column(name = "LOCATION")
-    protected Point location;
+    @Column(name = "C_LOCATION")
+    protected Point c_location;
+
+    @Lookup(type = LookupType.SCREEN, actions = {"lookup", "open"})
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "C_EMERGENCY_CONTACT_ID")
+    protected Humans c_EmergencyContact;
 
 
-    public Point getLocation() {
-        return location;
+    public Point getC_location() {
+        return c_location;
     }
 
 
-    public void setLocation(Point location) {
-        this.location = location;
+    public void setC_location(Point c_location) {
+        this.c_location = c_location;
     }
 
 

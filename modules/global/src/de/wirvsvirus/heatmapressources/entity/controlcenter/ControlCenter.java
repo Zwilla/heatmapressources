@@ -5,16 +5,12 @@ import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Lookup;
-import com.haulmont.cuba.core.entity.annotation.LookupType;
-import com.haulmont.cuba.core.entity.annotation.OnDelete;
-import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
-import com.haulmont.cuba.core.global.DeletePolicy;
 import de.wirvsvirus.heatmapressources.entity.locations.CityTown;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @NamePattern("%s|cc_Name")
 @Table(name = "HEATMAPRESSOURCES_CONTROL_CENTER")
@@ -26,20 +22,12 @@ public class ControlCenter extends StandardEntity {
     @Column(name = "CC_NAME", nullable = false)
     protected String cc_Name;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    @OnDelete(DeletePolicy.UNLINK)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CC_CITY_ID")
-    protected CityTown cc_City;
-
     @NotNull
     @Geometry
     @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint", mandatory = true)
-    @Column(name = "LOCATION", nullable = false)
-    protected Point location;
+    @Column(name = "CC_LOCATION", nullable = false)
+    protected Point cc_location;
 
     @Column(name = "CC_CONTACT")
     protected String cc_Contact;
@@ -47,14 +35,28 @@ public class ControlCenter extends StandardEntity {
     @Column(name = "CC_MAIN_TRACKING_SOURCES", length = 512)
     protected String cc_MainTrackingSources;
 
+    @Transient
+    @MetaProperty
+    protected List<CityTown> cc_City;
 
-    public Point getLocation() {
-        return location;
+
+    public void setCc_City(List<CityTown> cc_City) {
+        this.cc_City = cc_City;
     }
 
 
-    public void setLocation(Point location) {
-        this.location = location;
+    public List<CityTown> getCc_City() {
+        return cc_City;
+    }
+
+
+    public Point getCc_location() {
+        return cc_location;
+    }
+
+
+    public void setCc_location(Point cc_location) {
+        this.cc_location = cc_location;
     }
 
 
@@ -75,16 +77,6 @@ public class ControlCenter extends StandardEntity {
 
     public void setCc_Contact(String cc_Contact) {
         this.cc_Contact = cc_Contact;
-    }
-
-
-    public CityTown getCc_City() {
-        return cc_City;
-    }
-
-
-    public void setCc_City(CityTown cc_City) {
-        this.cc_City = cc_City;
     }
 
 

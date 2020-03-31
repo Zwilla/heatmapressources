@@ -1,14 +1,15 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Lookup;
-import com.haulmont.cuba.core.entity.annotation.LookupType;
-import de.wirvsvirus.heatmapressources.entity.hospital.HospitalContacts;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|contactName")
 @Table(name = "HEATMAPRESSOURCES_CONTACTS")
 @Entity(name = "heatmapressources_Contacts")
 public class Contacts extends StandardEntity {
@@ -30,22 +31,6 @@ public class Contacts extends StandardEntity {
 
     @Column(name = "CONTACT_DATA_SOURCES")
     protected String contactDataSources;
-
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "HOSPITAL_NAME_ID")
-    protected HospitalContacts hospitalName;
-
-
-    public HospitalContacts getHospitalName() {
-        return hospitalName;
-    }
-
-
-    public void setHospitalName(HospitalContacts hospitalName) {
-        this.hospitalName = hospitalName;
-    }
 
 
     public String getContactDataSources() {

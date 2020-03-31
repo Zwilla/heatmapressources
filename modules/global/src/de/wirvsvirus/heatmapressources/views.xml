@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
-    <view entity="heatmapressources_Country" name="country-view" overwrite="true" extends="_local"
-          systemProperties="true">
-        <property name="c_EmergencyContact" view="_local"/>
+    <view entity="heatmapressources_CityTown" name="cityTown-view" extends="_local">
+        <property name="ct_EmergencyContact" view="_local"/>
+        <property name="ct_Country" view="_local"/>
     </view>
 
-    <view entity="heatmapressources_Hospital" name="hospital-view" extends="_local">
-        <property name="h_ControlCenter" view="_local"/>
-    </view>
-
-    <view entity="heatmapressources_ControlCenter" name="controlCenter-view" extends="_local">
-        <property name="cc_City" view="_local"/>
-    </view>
-    <view entity="heatmapressources_ControlCenter" name="controlCenter-view_1" extends="_local">
-        <property name="cc_City" view="_local"/>
+    <view entity="heatmapressources_StateProvinceDistrict" name="stateProvinceDistrict-view" extends="_local">
+        <property name="spd_countryName" view="_local"/>
+        <property name="spd_EmergencyContact" view="_local"/>
     </view>
 
 </views>

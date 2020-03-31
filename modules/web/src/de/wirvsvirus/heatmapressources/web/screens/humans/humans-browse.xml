@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="humansesTable"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.humans">
+    <data readOnly="true">
+        <collection id="humansesDc"
+                    class="de.wirvsvirus.heatmapressources.entity.locations.Humans"
+                    view="_local">
+            <loader id="humansesDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Humans e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="humansesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="humansesTable"
+                dataLoader="humansesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="humansesTable"
+                    width="100%"
+                    dataContainer="humansesDc"
+                    multiselect="true"
+                    presentations="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="add" type="add"/>
+                <action id="exclude" type="exclude"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="hr_Fullname" editable="false"/>
+                <column id="hr_FirstName"/>
+                <column id="hr_LastName"/>
+                <column id="hr_Birthday"/>
+                <column id="hr_ImeiNumber"/>
+                <column id="hr_phonenumber"/>
+                <column id="hr_Tracked_Since"/>
+                <column id="hr_healthState"/>
+                <column id="hr_Description"/>
+                <column id="hr_location_Home"/>
+                <column id="hr_location_Tracking"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="humansesTable.create"/>
+                <button id="editBtn" action="humansesTable.edit"/>
+                <button id="removeBtn" action="humansesTable.remove"/>
+                <button id="refreshBtn" action="humansesTable.refresh"/>
+                <button id="addBtn" action="humansesTable.add"/>
+                <button id="excludeBtn" action="humansesTable.exclude"/>
+                <button id="excelBtn" action="humansesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

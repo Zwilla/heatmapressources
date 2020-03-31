@@ -1,0 +1,1 @@
+alter table HEATMAPRESSOURCES_CITY_TOWN drop column CT_GEO_POLYGON__U30721 cascade ;

@@ -1,0 +1,1 @@
+alter table HEATMAPRESSOURCES_CITY_TOWN alter column CT_GEO_POLYGON rename to CT_GEO_POLYGON__U30721 ^

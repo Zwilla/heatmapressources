@@ -7,8 +7,7 @@
         messagesPack="de.wirvsvirus.heatmapressources.web.screens.heatmap_humans5g">
     <data readOnly="true">
         <collection id="heatMap_Humans5GsDc"
-                    class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G"
-                    >
+                    class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G">
             <view extends="_local"/>
             <loader id="heatMap_Humans5GsDl">
                 <query>
@@ -17,8 +16,7 @@
             </loader>
         </collection>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="600" width="800"/>
     <layout expand="heatMap_Humans5GsTable"
             spacing="true">
         <filter id="filter"
@@ -50,7 +48,7 @@
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
         </hbox>
-        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="500px">
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="800px">
             <maps:layers selectedLayer="casesLayer">
                 <maps:tile id="tiles"
                            tileProvider="maps_OpenStreetMap"/>

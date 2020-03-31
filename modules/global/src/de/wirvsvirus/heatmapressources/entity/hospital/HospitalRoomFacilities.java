@@ -3,6 +3,7 @@ package de.wirvsvirus.heatmapressources.entity.hospital;
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -11,10 +12,15 @@ import org.locationtech.jts.geom.Point;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|hrf_Name")
 @Table(name = "HEATMAPRESSOURCES_HOSPITAL_ROOM_FACILITIES")
 @Entity(name = "heatmapressources_HospitalRoomFacilities")
 public class HospitalRoomFacilities extends StandardEntity {
     private static final long serialVersionUID = -1424071497676038327L;
+
+    @NotNull
+    @Column(name = "HRF_NAME", nullable = false, unique = true)
+    protected String hrf_Name;
 
     @NotNull
     @Column(name = "INTENSIVE_CARE_BEDS_NUMBER", nullable = false)
@@ -40,6 +46,16 @@ public class HospitalRoomFacilities extends StandardEntity {
 
     @Column(name = "DSECRIPTION")
     protected String description;
+
+
+    public String getHrf_Name() {
+        return hrf_Name;
+    }
+
+
+    public void setHrf_Name(String hrf_Name) {
+        this.hrf_Name = hrf_Name;
+    }
 
 
     public void setHrf_location_tracking(Point hrf_location_tracking) {

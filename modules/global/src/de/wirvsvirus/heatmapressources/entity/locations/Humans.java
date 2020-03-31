@@ -3,18 +3,27 @@ package de.wirvsvirus.heatmapressources.entity.locations;
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.CaseConversion;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Table(name = "HEATMAPRESSOURCES_HUMANS")
+@PublishEntityChangedEvents
+@NamePattern("%s %s|hr_LastName,hr_FirstName")
+@Table(name = "HEATMAPRESSOURCES_HUMANS", uniqueConstraints = {
+        @UniqueConstraint(name = "IDX_HEATMAPRESSOURCES_HUMANS_UNQ", columnNames = {"HR_IMEI_NUMBER"})
+})
 @Entity(name = "heatmapressources_Humans")
 public class Humans extends StandardEntity {
     private static final long serialVersionUID = -3225238986113551300L;
+
+    @Column(name = "HR_FULLNAME")
+    protected String hr_Fullname;
 
     @NotNull
     @Column(name = "HR_FIRST_NAME", nullable = false)
@@ -22,6 +31,7 @@ public class Humans extends StandardEntity {
 
     @Column(name = "HR_LAST_NAME")
     protected String hr_LastName;
+
 
     @Temporal(TemporalType.DATE)
     @Column(name = "HR_BIRTHDAY")
@@ -58,6 +68,16 @@ public class Humans extends StandardEntity {
     protected Point hr_location_Tracking;
 
 
+    public String getHr_Fullname() {
+        return hr_Fullname;
+    }
+
+
+    public void setHr_Fullname() {
+        this.hr_Fullname = this.hr_LastName + " " + this.hr_FirstName;
+    }
+
+
     public Date getHr_Birthday() {
         return hr_Birthday;
     }
@@ -85,6 +105,7 @@ public class Humans extends StandardEntity {
 
     public void setHr_LastName(String hr_LastName) {
         this.hr_LastName = hr_LastName;
+        setHr_Fullname();
     }
 
 
@@ -95,8 +116,8 @@ public class Humans extends StandardEntity {
 
     public void setHr_FirstName(String hr_FirstName) {
         this.hr_FirstName = hr_FirstName;
+        setHr_Fullname();
     }
-
 
     public String getHr_phonenumber() {
         return hr_phonenumber;

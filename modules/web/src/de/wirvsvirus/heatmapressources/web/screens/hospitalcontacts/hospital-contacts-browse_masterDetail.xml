@@ -39,12 +39,12 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <columns>
-                        <column id="hospitalMainContact"/>
+                        <column id="hc_MainContact"/>
                         <column id="hc_PhoneNumber"/>
                         <column id="hc_Email"/>
                         <column id="hc_Faximile"/>
                         <column id="hc_HeadOf"/>
-                        <column id="description"/>
+                        <column id="hc_description"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -63,12 +63,12 @@
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="hospitalContactsDc">
                         <column width="250px">
-                            <textField id="hospitalMainContactField" property="hospitalMainContact"/>
+                            <textField id="hospitalMainContactField" property="hc_MainContact"/>
                             <textField id="hc_PhoneNumberField" property="hc_PhoneNumber"/>
                             <textField id="hc_EmailField" property="hc_Email"/>
                             <textField id="hc_FaximileField" property="hc_Faximile"/>
                             <textField id="hc_HeadOfField" property="hc_HeadOf"/>
-                            <textField id="descriptionField" property="description"/>
+                            <textField id="descriptionField" property="hc_description"/>
                         </column>
                     </form>
                 </scrollBox>

@@ -6,13 +6,14 @@
         <item screen="heatmapressources_TrackingWhat.browse" icon="GEAR"/>
         <item screen="heatmapressources_Things.browse" icon="GEARS"/>
         <item screen="heatmapressources_AboutTracking.browse" icon="BINOCULARS"/>
+        <item screen="heatmapressources_Tracking.browse" icon="WIFI"/>
     </menu>
 
     <menu id="location" insertBefore="administration" expanded="true" icon="MAP_PIN">
         <item screen="heatmapressources_Country.browse" openType="NEW_TAB" icon="FLAG_CHECKERED"/>
+        <item screen="heatmapressources_StateProvinceDistrict_single.browse" icon="BUILDING_O"/>
         <item screen="heatmapressources_CityTown.browse" icon="BUILDING_O"/>
-        <item screen="heatmapressources_StateProvinceDistrict.browse" icon="MAP_SIGNS"/>
-        <item screen="heatmapressources_Humans.browse" icon="FEMALE"/>
+        <item screen="heatmapressources_Humans.browse" icon="MALE"/>
     </menu>
 
     <menu id="maps" insertBefore="administration" icon="MAP" description="Maps view and edit">
@@ -30,8 +31,8 @@
         <item screen="heatmapressources_EmergencyTransportation.browse" icon="CAB"/>
     </menu>
 
-    <menu id="hospital" insertBefore="administration" icon="HOSPITAL_O">
-        <item screen="heatmapressources_Hospital.browse" shortcut="CTRL-ALT-H" icon="HOSPITAL_O"/>
+    <menu id="hospital" insertBefore="administration" icon="BUILDING">
+        <item screen="heatmapressources_Hospital.browse" icon="BUILDING_O"/>
         <item screen="heatmapressources_HospitalContacts.browse" icon="PHONE"/>
         <item screen="heatmapressources_Patients.browse" icon="MALE"/>
 

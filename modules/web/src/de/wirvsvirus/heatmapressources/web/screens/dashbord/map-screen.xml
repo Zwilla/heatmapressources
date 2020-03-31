@@ -33,7 +33,7 @@
             <lookup multiselect="true" optionsContainer="layersDc"/>
         </tokenList>
 
-        <maps:geoMap width="100%" height="100%" id="mainMap" center="8.4964812, 50.1211277">
+        <maps:geoMap width="100%" id="mainMap" center="8.4964812, 50.1211277">
 
             <maps:layers selectedLayer="humansLayer">
                 <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>

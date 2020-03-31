@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.citytown">
+    <data>
+        <instance id="cityTownsIc"
+                  class="de.wirvsvirus.heatmapressources.entity.locations.CityTown">
+            <view extends="_local">
+                <property name="ct_Country" view="_minimal"/>
+                <property name="ct_EmergencyContact" view="_minimal"/>
+                <property name="ct_stateProvinceDistrictName" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="cityTownDc" class="de.wirvsvirus.heatmapressources.entity.locations.CityTown">
+            <view extends="_local">
+                <property name="ct_Country" view="_minimal"/>
+                <property name="ct_EmergencyContact" view="_minimal"/>
+                <property name="ct_stateProvinceDistrictName" view="_minimal"/>
+            </view>
+            <loader id="cityTownsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_CityTown e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="CountriesDc" class="de.wirvsvirus.heatmapressources.entity.locations.Country" view="_local">
+            <loader id="CountriesDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Country e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="statesDc" class="de.wirvsvirus.heatmapressources.entity.locations.StateProvinceDistrict"
+                    view="_local">
+            <loader id="statesDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_StateProvinceDistrict e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="ContactsDc" class="de.wirvsvirus.heatmapressources.entity.locations.Humans" view="_local">
+            <loader id="ContactsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Humans e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600" width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="cityTownsIc">
+            <column width="250px">
+                <lookupField id="CountryField" dataContainer="cityTownsIc" property="ct_Country"
+                             optionsContainer="CountriesDc"/>
+                <lookupField id="stateProvinceDistrictNameField" dataContainer="cityTownsIc"
+                             property="ct_stateProvinceDistrictName" optionsContainer="statesDc"/>
+                <lookupField id="EmergencyContactField" dataContainer="cityTownsIc" property="ct_EmergencyContact"
+                             optionsContainer="ContactsDc"/>
+                <textField id="ct_locationField" property="ct_location"/>
+                <textField id="ct_NameField" property="ct_Name"/>
+                <textField id="ct_descriptionField" property="ct_description"/>
+                <textField id="ct_ZipCodeField" property="ct_ZipCode"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="600px">
+            <maps:layers selectedLayer="cityLayer">
+                <maps:tile id="tiles"
+                           tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="cityLayer" dataContainer="cityTownsIc" editable="true"/>
+                <maps:vector id="districtLayer" dataContainer="statesDc" editable="true"/>
+                <maps:vector id="humansLayer" dataContainer="ContactsDc" editable="true"/>
+            </maps:layers>
+        </maps:geoMap>
+    </layout>
+</window>

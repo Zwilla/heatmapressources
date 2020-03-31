@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.stateprovincedistrict">
+    <data>
+        <instance id="stateProvinceDistrictDc"
+                  class="de.wirvsvirus.heatmapressources.entity.locations.StateProvinceDistrict">
+            <view extends="_local">
+                <property name="spd_countryName" view="_minimal"/>
+                <property name="spd_EmergencyContact" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+
+        <collection id="CountriesDc" class="de.wirvsvirus.heatmapressources.entity.locations.Country" view="_local">
+            <loader id="CountriesDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Country e]]>
+                </query>
+            </loader>
+        </collection>
+
+
+        <collection id="ContactsDc" class="de.wirvsvirus.heatmapressources.entity.locations.Humans" view="_local">
+            <loader id="ContactsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Humans e]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="stateProvinceDistrictDc">
+            <column width="250px">
+                <lookupField id="CountryField" dataContainer="stateProvinceDistrictDc" property="spd_countryName" optionsContainer="CountriesDc"/>
+                <lookupField id="EmergencyContactField" dataContainer="stateProvinceDistrictDc" property="spd_EmergencyContact" optionsContainer="ContactsDc"/>
+                <textField id="stateProvinceDistrictNameField" property="stateProvinceDistrictName"/>
+                <textField id="spd_descriptionField" property="spd_description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

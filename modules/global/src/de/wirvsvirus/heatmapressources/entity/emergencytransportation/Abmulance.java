@@ -3,7 +3,7 @@ package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
-import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -15,10 +15,14 @@ import org.locationtech.jts.geom.Point;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Table(name = "HEATMAPRESSOURCES_ABMULANCE")
+@NamePattern("%s|a_Name")
 @Entity(name = "heatmapressources_Abmulance")
-public class Abmulance extends StandardEntity {
+public class Abmulance extends ControlCenter {
     private static final long serialVersionUID = 5111523979631362017L;
+
+    @NotNull
+    @Column(name = "A_NAME", nullable = false)
+    protected String a_Name;
 
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
     @NotNull
@@ -26,7 +30,7 @@ public class Abmulance extends StandardEntity {
     @OnDelete(DeletePolicy.UNLINK)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ET_CONTROL_CENTER_ID")
-    protected ControlCenter et_ControlCenter;
+    protected ControlCenter a_ControlCenter;
 
     @Geometry
     @Convert(converter = CubaPointWKTConverter.class)
@@ -45,6 +49,16 @@ public class Abmulance extends StandardEntity {
     protected String a_directContact;
 
 
+    public String getA_Name() {
+        return a_Name;
+    }
+
+
+    public void setA_Name(String a_Name) {
+        this.a_Name = a_Name;
+    }
+
+
     public void setA_tracking_source(String a_tracking_source) {
         this.a_tracking_source = a_tracking_source;
     }
@@ -55,13 +69,13 @@ public class Abmulance extends StandardEntity {
     }
 
 
-    public ControlCenter getEt_ControlCenter() {
-        return et_ControlCenter;
+    public ControlCenter getA_ControlCenter() {
+        return a_ControlCenter;
     }
 
 
-    public void setEt_ControlCenter(ControlCenter et_ControlCenter) {
-        this.et_ControlCenter = et_ControlCenter;
+    public void setA_ControlCenter(ControlCenter a_ControlCenter) {
+        this.a_ControlCenter = a_ControlCenter;
     }
 
 

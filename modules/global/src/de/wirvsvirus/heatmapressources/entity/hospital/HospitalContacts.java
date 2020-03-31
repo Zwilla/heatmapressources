@@ -1,7 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
 
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -11,10 +10,9 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|description")
-@Table(name = "HEATMAPRESSOURCES_HOSPITAL_CONTACTS")
+@NamePattern("%s|hc_description")
 @Entity(name = "heatmapressources_HospitalContacts")
-public class HospitalContacts extends StandardEntity {
+public class HospitalContacts extends Hospital {
     private static final long serialVersionUID = -1083098619523556722L;
 
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
@@ -27,7 +25,7 @@ public class HospitalContacts extends StandardEntity {
 
     @NotNull
     @Column(name = "HOSPITAL_MAIN_CONTACT", nullable = false)
-    protected String hospitalMainContact;
+    protected String hc_MainContact;
 
     @NotNull
     @Column(name = "HC_PHONE_NUMBER", nullable = false)
@@ -44,7 +42,7 @@ public class HospitalContacts extends StandardEntity {
     protected String hc_HeadOf;
 
     @Column(name = "DESCRIPTION")
-    protected String description;
+    protected String hc_description;
 
 
     public Hospital getHc_Hospital() {
@@ -97,22 +95,22 @@ public class HospitalContacts extends StandardEntity {
     }
 
 
-    public String getDescription() {
-        return description;
+    public String getHc_description() {
+        return hc_description;
     }
 
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setHc_description(String hc_description) {
+        this.hc_description = hc_description;
     }
 
 
-    public String getHospitalMainContact() {
-        return hospitalMainContact;
+    public String getHc_MainContact() {
+        return hc_MainContact;
     }
 
 
-    public void setHospitalMainContact(String hospitalMainContact) {
-        this.hospitalMainContact = hospitalMainContact;
+    public void setHc_MainContact(String hc_MainContact) {
+        this.hc_MainContact = hc_MainContact;
     }
 }

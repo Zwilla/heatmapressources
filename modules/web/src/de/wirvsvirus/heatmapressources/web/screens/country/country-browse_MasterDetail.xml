@@ -4,26 +4,44 @@
         caption="msg://browseCaption"
         focusComponent="table"
         messagesPack="de.wirvsvirus.heatmapressources.web.screens.country">
+
     <data>
         <collection id="countriesDc"
-                    class="de.wirvsvirus.heatmapressources.entity.locations.Country"
-                    view="_local">
+                    class="de.wirvsvirus.heatmapressources.entity.locations.Country">
+            <view extends="_local">
+                <property name="c_EmergencyContact" fetch="AUTO" view="_local"/>
+            </view>
             <loader id="countriesDl">
                 <query>
                     <![CDATA[select e from heatmapressources_Country e]]>
                 </query>
             </loader>
         </collection>
+
         <instance id="countryDc"
-                  class="de.wirvsvirus.heatmapressources.entity.locations.Country"
-                  view="_local">
+                  class="de.wirvsvirus.heatmapressources.entity.locations.Country">
+            <view extends="_base">
+                <property name="c_EmergencyContact" view="_base"/>
+            </view>
             <loader/>
         </instance>
+
+        <collection id="ContactsDc" class="de.wirvsvirus.heatmapressources.entity.locations.Humans" view="_local">
+            <loader id="ContactsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Humans e]]>
+                </query>
+            </loader>
+        </collection>
+
     </data>
+
     <actions>
         <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
         <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+        <action id="someAction" caption="Click Me!"/>
     </actions>
+
     <dialogMode height="600" width="800"/>
     <layout>
         <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
@@ -42,14 +60,16 @@
                     <columns>
                         <column id="countryName"/>
                         <column id="c_EmergencyWebsite"/>
-                        <column id="location"/>
+                        <column id="c_location"/>
+                        <column id="c_EmergencyContact"/>
                     </columns>
                     <rowsCount/>
-                    <buttonsPanel id="buttonsPanel"
-                                  alwaysVisible="true">
+                    <buttonsPanel id="buttonsPanel" alwaysVisible="true">
                         <button id="createBtn" action="table.create"/>
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
+                        <button action="someAction"/>
+                        <button id="button"/>
                     </buttonsPanel>
                 </groupTable>
                 <hbox id="lookupActions" spacing="true" visible="false">
@@ -61,9 +81,10 @@
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="countryDc">
                         <column width="250px">
+                            <lookupField id="c_EmergencyContactField" dataContainer="countryDc" property="c_EmergencyContact" optionsContainer="ContactsDc"/>
                             <textField id="countryNameField" property="countryName"/>
                             <textField id="c_EmergencyWebsiteField" property="c_EmergencyWebsite"/>
-                            <textField id="locationField" property="location"/>
+                            <textField id="locationField" property="c_location"/>
                         </column>
                     </form>
                 </scrollBox>
@@ -75,7 +96,7 @@
                     <maps:layers selectedLayer="countryLayer">
                         <maps:tile id="tiles"
                                    tileProvider="maps_OpenStreetMap"/>
-                        <maps:vector id="countryLayer" dataContainer="countriesDc" editable="true"/>
+                        <maps:vector id="countryLayer" dataContainer="countryDc" editable="true"/>
                     </maps:layers>
                 </maps:geoMap>
             </vbox>

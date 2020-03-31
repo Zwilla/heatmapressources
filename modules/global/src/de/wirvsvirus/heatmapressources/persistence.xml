@@ -28,5 +28,11 @@
         <class>de.wirvsvirus.heatmapressources.entity.heatmaps.LayerWrapper</class>
         <class>de.wirvsvirus.heatmapressources.entity.locations.Things</class>
         <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.services.AboutTracking</class>
+        <class>de.wirvsvirus.heatmapressources.entity.tracking_sources.Tracking</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.PolyGonDatabase</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Addresses</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.BoundingBox</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.AdressesClass</class>
+        <class>de.wirvsvirus.heatmapressources.entity.locations.Geometry</class>
     </persistence-unit>
 </persistence>

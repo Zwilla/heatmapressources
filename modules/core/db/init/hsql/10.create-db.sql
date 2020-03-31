@@ -1,3 +1,29 @@
+-- begin HEATMAPRESSOURCES_LAYER_WRAPPER
+create table HEATMAPRESSOURCES_LAYER_WRAPPER (
+    ID varchar(36) not null,
+    --
+    NAME longvarchar not null,
+    DATACONTAINERID longvarchar not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_LAYER_WRAPPER
+-- begin HEATMAPRESSOURCES_TRACKING_WHAT
+create table HEATMAPRESSOURCES_TRACKING_WHAT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    GR_TRACKING_THIS varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_TRACKING_WHAT
 -- begin HEATMAPRESSOURCES_PATIENTS
 create table HEATMAPRESSOURCES_PATIENTS (
     ID varchar(36) not null,
@@ -38,26 +64,6 @@ create table HEATMAPRESSOURCES_HEAT_MAPS_ALL (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_HEAT_MAPS_ALL
--- begin HEATMAPRESSOURCES_ABMULANCE
-create table HEATMAPRESSOURCES_ABMULANCE (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    ET_CONTROL_CENTER_ID varchar(36) not null,
-    A_LOCATION VARCHAR(100),
-    A_TRACKING_SOURCE varchar(255) not null,
-    A_TYPE varchar(255),
-    A_DIRECT_CONTACT varchar(255),
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_ABMULANCE
 -- begin HEATMAPRESSOURCES_USER_RIGHTS
 create table HEATMAPRESSOURCES_USER_RIGHTS (
     ID varchar(36) not null,
@@ -91,11 +97,30 @@ create table HEATMAPRESSOURCES_CONTACTS (
     CONTACT_PHONE_NUMBER varchar(255),
     CONTACT_WEBSITE varchar(255),
     CONTACT_DATA_SOURCES varchar(255),
-    HOSPITAL_NAME_ID varchar(36) not null,
     --
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_CONTACTS
+-- begin HEATMAPRESSOURCES_ABOUT_TRACKING
+create table HEATMAPRESSOURCES_ABOUT_TRACKING (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TS_ABOUT_WHAT varchar(255) not null,
+    TS_WEBSITE varchar(255) not null,
+    TS_CONTACT_MAIL varchar(255),
+    TS_CONTACT_PHONE varchar(255),
+    TS_DESCRIPTION longvarchar not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_ABOUT_TRACKING
 -- begin HEATMAPRESSOURCES_USERS
 create table HEATMAPRESSOURCES_USERS (
     ID varchar(36) not null,
@@ -117,28 +142,6 @@ create table HEATMAPRESSOURCES_USERS (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_USERS
--- begin HEATMAPRESSOURCES_HOSPITAL_CONTACTS
-create table HEATMAPRESSOURCES_HOSPITAL_CONTACTS (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    HC_HOSPITAL_ID varchar(36) not null,
-    HOSPITAL_MAIN_CONTACT varchar(255) not null,
-    HC_PHONE_NUMBER varchar(255) not null,
-    HC_EMAIL varchar(255) not null,
-    HC_FAXIMILE varchar(255),
-    HC_HEAD_OF varchar(255),
-    DESCRIPTION varchar(255),
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_HOSPITAL_CONTACTS
 -- begin HEATMAPRESSOURCES_HUMANS
 create table HEATMAPRESSOURCES_HUMANS (
     ID varchar(36) not null,
@@ -150,6 +153,7 @@ create table HEATMAPRESSOURCES_HUMANS (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    HR_FULLNAME varchar(255),
     HR_FIRST_NAME varchar(255) not null,
     HR_LAST_NAME varchar(255),
     HR_BIRTHDAY date,
@@ -215,6 +219,7 @@ create table HEATMAPRESSOURCES_HOSPITAL_ROOM_FACILITIES (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    HRF_NAME varchar(255) not null,
     INTENSIVE_CARE_BEDS_NUMBER integer not null,
     RV_RESPIRATORY_VENTILATOR_ID varchar(36) not null,
     HRF_LOCATION_TRACKING VARCHAR(100),
@@ -224,6 +229,57 @@ create table HEATMAPRESSOURCES_HOSPITAL_ROOM_FACILITIES (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_HOSPITAL_ROOM_FACILITIES
+-- begin HEATMAPRESSOURCES_GLOBAL_RESOURCES
+create table HEATMAPRESSOURCES_GLOBAL_RESOURCES (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    GR_TRACKING_WHAT_ID varchar(36) not null,
+    GR_TRACKING_URL varchar(512) not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_GLOBAL_RESOURCES
+-- begin HEATMAPRESSOURCES_TRACKING
+create table HEATMAPRESSOURCES_TRACKING (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TR_TRACK_OVER varchar(50),
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_TRACKING
+-- begin HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G
+create table HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    HM_IMEI varchar(255) not null,
+    HM_H_LOCATION VARCHAR(100),
+    HAS_CORONA_SINCE timestamp,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G
 -- begin HEATMAPRESSOURCES_STATE_PROVINCE_DISTRICT
 create table HEATMAPRESSOURCES_STATE_PROVINCE_DISTRICT (
     ID varchar(36) not null,
@@ -255,13 +311,12 @@ create table HEATMAPRESSOURCES_CITY_TOWN (
     DELETED_BY varchar(50),
     --
     CT_COUNTRY_ID varchar(36) not null,
-    CT_LOCATION VARCHAR(100),
+    CT_EMERGENCY_CONTACT_ID varchar(36) not null,
+    CT_LOCATION VARCHAR(4000),
     CITY_NAME varchar(255) not null,
     DESCRIPTION varchar(255),
     CT_ZIP_CODE varchar(255) not null,
-    CT_EMERGENCY_CONTACT varchar(255),
     STATE_PROVINCE_DISTRICT_NAME_ID varchar(36) not null,
-    CT_EMERGENCY_CONTACT_ID varchar(36) not null,
     --
     primary key (ID)
 )^
@@ -276,12 +331,20 @@ create table HEATMAPRESSOURCES_CONTROL_CENTER (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
+    DTYPE varchar(100),
     --
     CC_NAME varchar(255) not null,
-    CC_CITY_ID varchar(36) not null,
-    LOCATION VARCHAR(100) not null,
+    CC_LOCATION VARCHAR(100) not null,
     CC_CONTACT varchar(255),
     CC_MAIN_TRACKING_SOURCES varchar(512),
+    --
+    -- from heatmapressources_Abmulance
+    A_NAME varchar(255) not null,
+    ET_CONTROL_CENTER_ID varchar(36) not null,
+    A_LOCATION VARCHAR(100),
+    A_TRACKING_SOURCE varchar(255) not null,
+    A_TYPE varchar(255),
+    A_DIRECT_CONTACT varchar(255),
     --
     primary key (ID)
 )^
@@ -296,16 +359,27 @@ create table HEATMAPRESSOURCES_HOSPITAL (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
+    DTYPE varchar(100),
     --
     H_CONTROL_CENTER_ID varchar(36) not null,
+    H_LOCATION_UUID varchar(255),
     H_ADDRESS longvarchar,
-    HOSPITAL_NAME varchar(255) not null,
-    LOCATION VARCHAR(100),
+    H_NAME varchar(255) not null,
+    H_LOCATION VARCHAR(100),
     H_MAX_ROOMS integer not null,
     H_ROOMS_WITH_RESPIRATORY_VENTILATOR integer not null,
     H_ROOMS_WITH_RESPIRATORY_VENTILATOR_FREE integer,
     H_INTENSIVE_CARE_UNITS integer,
-    DESCRIPTION varchar(255) not null,
+    H_DESCRIPTION varchar(255) not null,
+    --
+    -- from heatmapressources_HospitalContacts
+    HC_HOSPITAL_ID varchar(36) not null,
+    HOSPITAL_MAIN_CONTACT varchar(255) not null,
+    HC_PHONE_NUMBER varchar(255) not null,
+    HC_EMAIL varchar(255) not null,
+    HC_FAXIMILE varchar(255),
+    HC_HEAD_OF varchar(255),
+    DESCRIPTION varchar(255),
     --
     primary key (ID)
 )^
@@ -342,6 +416,7 @@ create table HEATMAPRESSOURCES_MEDICAL_PROFESSIONALS (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    MP_NAME varchar(255) not null,
     MP_CONTROL_CENTER_ID varchar(36) not null,
     MP_UNIQUE_SOCIAL_NUMBER varchar(255),
     MP_CERTIFICATION varchar(255) not null,
@@ -350,6 +425,28 @@ create table HEATMAPRESSOURCES_MEDICAL_PROFESSIONALS (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_MEDICAL_PROFESSIONALS
+-- begin HEATMAPRESSOURCES_EMERGENCY_HELICOPTER
+create table HEATMAPRESSOURCES_EMERGENCY_HELICOPTER (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EH_NAME varchar(255) not null,
+    EH_CONTROL_CENTER_ID varchar(36) not null,
+    EH_EMERGENCY_HELICOPTER_UUID varchar(255) not null,
+    EH_LOCATION_HOME VARCHAR(100) not null,
+    EH_LOCATION_TRACKING VARCHAR(100),
+    EH_TRACKING_SOURCE varchar(512),
+    EH_CONTACT varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end HEATMAPRESSOURCES_EMERGENCY_HELICOPTER
 -- begin HEATMAPRESSOURCES_COUNTRY
 create table HEATMAPRESSOURCES_COUNTRY (
     ID varchar(36) not null,
@@ -362,9 +459,9 @@ create table HEATMAPRESSOURCES_COUNTRY (
     DELETED_BY varchar(50),
     --
     COUNTRY_NAME varchar(255) not null,
-    C_EMERGENCY_CONTACT_ID varchar(36) not null,
     C_EMERGENCY_WEBSITE varchar(512) not null,
-    LOCATION VARCHAR(100),
+    C_LOCATION VARCHAR(100),
+    C_EMERGENCY_CONTACT_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -380,6 +477,7 @@ create table HEATMAPRESSOURCES_EMERGENCY_TRANSPORTATION (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    ET_NAME varchar(255) not null,
     ET_CONTROL_CENTER_ID varchar(36) not null,
     ET_AMBULANCE_UUID varchar(512),
     ET_EMERGENCY_HELICOPTER varchar(512),
@@ -389,88 +487,6 @@ create table HEATMAPRESSOURCES_EMERGENCY_TRANSPORTATION (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_EMERGENCY_TRANSPORTATION
--- begin HEATMAPRESSOURCES_EMERGENCY_HELICOPTER
-create table HEATMAPRESSOURCES_EMERGENCY_HELICOPTER (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    EH_CONTROL_CENTER_ID varchar(36) not null,
-    EH_EMERGENCY_HELICOPTER_UUID varchar(255) not null,
-    EH_LOCATION_HOME VARCHAR(100) not null,
-    EH_LOCATION_TRACKING VARCHAR(100),
-    EH_TRACKING_SOURCE varchar(512),
-    EH_CONTACT varchar(255) not null,
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_EMERGENCY_HELICOPTER
--- begin HEATMAPRESSOURCES_TRACKING_WHAT
-create table HEATMAPRESSOURCES_TRACKING_WHAT (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    GR_TRACKING_THIS varchar(255) not null,
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_TRACKING_WHAT
--- begin HEATMAPRESSOURCES_GLOBAL_RESOURCES
-create table HEATMAPRESSOURCES_GLOBAL_RESOURCES (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    GR_TRACKING_WHAT_ID varchar(36) not null,
-    GR_TRACKING_URL varchar(512) not null,
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_GLOBAL_RESOURCES
--- begin HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G
-create table HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    HM_IMEI varchar(255) not null,
-    HAS_CORONA_SINCE timestamp,
-    HM_H_LOCATION VARCHAR(100),
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_HEAT_MAP_HUMANS5G
--- begin HEATMAPRESSOURCES_LAYER_WRAPPER
-create table HEATMAPRESSOURCES_LAYER_WRAPPER (
-    ID varchar(36) not null,
-    --
-    NAME longvarchar not null,
-    DATACONTAINERID longvarchar not null,
-    --
-    primary key (ID)
-)^
--- end HEATMAPRESSOURCES_LAYER_WRAPPER
 -- begin HEATMAPRESSOURCES_THINGS
 create table HEATMAPRESSOURCES_THINGS (
     ID varchar(36) not null,
@@ -493,8 +509,8 @@ create table HEATMAPRESSOURCES_THINGS (
     primary key (ID)
 )^
 -- end HEATMAPRESSOURCES_THINGS
--- begin HEATMAPRESSOURCES_ABOUT_TRACKING
-create table HEATMAPRESSOURCES_ABOUT_TRACKING (
+-- begin HEATMAPRESSOURCES_POLY_GON_DATABASE
+create table HEATMAPRESSOURCES_POLY_GON_DATABASE (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -504,12 +520,9 @@ create table HEATMAPRESSOURCES_ABOUT_TRACKING (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    TS_ABOUT_WHAT varchar(255) not null,
-    TS_WEBSITE varchar(255) not null,
-    TS_CONTACT_MAIL varchar(255),
-    TS_CONTACT_PHONE varchar(255),
-    TS_DESCRIPTION longvarchar not null,
+    DESCRIPTION varchar(255) not null,
+    POLYGONE VARCHAR(4000),
     --
     primary key (ID)
 )^
--- end HEATMAPRESSOURCES_ABOUT_TRACKING
+-- end HEATMAPRESSOURCES_POLY_GON_DATABASE

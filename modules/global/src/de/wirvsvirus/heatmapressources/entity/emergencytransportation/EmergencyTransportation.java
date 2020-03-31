@@ -3,6 +3,7 @@ package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -15,10 +16,15 @@ import org.locationtech.jts.geom.Point;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|et_Name")
 @Table(name = "HEATMAPRESSOURCES_EMERGENCY_TRANSPORTATION")
 @Entity(name = "heatmapressources_EmergencyTransportation")
 public class EmergencyTransportation extends StandardEntity {
     private static final long serialVersionUID = 4436786865647325428L;
+
+    @NotNull
+    @Column(name = "ET_NAME", nullable = false, unique = true)
+    protected String et_Name;
 
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
     @NotNull
@@ -42,6 +48,16 @@ public class EmergencyTransportation extends StandardEntity {
 
     @Column(name = "ET_TRACKING_SOURCE", length = 512)
     protected String et_tracking_source;
+
+
+    public String getEt_Name() {
+        return et_Name;
+    }
+
+
+    public void setEt_Name(String et_Name) {
+        this.et_Name = et_Name;
+    }
 
 
     public ControlCenter getEt_ControlCenter() {

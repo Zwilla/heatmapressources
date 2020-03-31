@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://browseCaption"
+        focusComponent="cityTownsTable"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.citytown">
+    <data readOnly="true">
+        <collection id="cityTownsDc" class="de.wirvsvirus.heatmapressources.entity.locations.CityTown">
+            <view extends="_local">
+                <property name="ct_Country" view="_minimal"/>
+                <property name="ct_EmergencyContact" view="_minimal"/>
+                <property name="ct_stateProvinceDistrictName" view="_minimal"/>
+            </view>
+            <loader id="cityTownsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_CityTown e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600" width="80%"/>
+    <layout expand="cityTownsTable"
+            spacing="true">
+        <filter id="filter"
+            applyTo="cityTownsTable"
+            dataLoader="cityTownsDl">
+            <properties include=".*"/>
+        </filter>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+        <groupTable id="cityTownsTable" width="100%" dataContainer="cityTownsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="ct_Country"/>
+                <column id="ct_EmergencyContact"/>
+                <column id="ct_stateProvinceDistrictName"/>
+                <column id="ct_location"/>
+                <column id="ct_Name"/>
+                <column id="ct_description"/>
+                <column id="ct_ZipCode"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="cityTownsTable.create"/>
+                <button id="editBtn" action="cityTownsTable.edit"/>
+                <button id="removeBtn" action="cityTownsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox>
+            <mapViewer id="mapViewerID"/>
+            <maps:geoMap zoom="12" center="8.4964812, 50.1211277" id="Map" width="100%" height="400px">
+                <maps:layers selectedLayer="cityTownLayer">
+                    <maps:tile id="tileLayer" tileProvider="maps_OpenStreetMap"/>
+                    <maps:vector id="cityTownLayer" dataContainer="cityTownsDc" editable="true"/>
+                </maps:layers>
+            </maps:geoMap>
+        </hbox>
+    </layout>
+</window>

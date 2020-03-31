@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.humans">
+    <data>
+        <instance id="humansDc"
+                  class="de.wirvsvirus.heatmapressources.entity.locations.Humans"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="humansDc">
+                <column width="250px">
+                    <textField id="hr_FullnameField" property="hr_Fullname" editable="false"/>
+                    <textField id="hr_FirstNameField" property="hr_FirstName"/>
+                    <textField id="hr_LastNameField" property="hr_LastName"/>
+                    <dateField id="hr_BirthdayField" property="hr_Birthday"/>
+                    <textField id="hr_ImeiNumberField" property="hr_ImeiNumber"/>
+                    <textField id="hr_phonenumberField" property="hr_phonenumber"/>
+                    <dateField id="hr_Tracked_SinceField" property="hr_Tracked_Since"/>
+                    <textField id="hr_healthStateField" property="hr_healthState"/>
+                    <textField id="hr_DescriptionField" property="hr_Description"/>
+                    <textField id="hr_location_HomeField" property="hr_location_Home"/>
+                    <textField id="hr_location_TrackingField" property="hr_location_Tracking"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowCommit"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

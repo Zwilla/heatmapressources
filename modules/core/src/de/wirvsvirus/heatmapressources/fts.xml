@@ -79,5 +79,23 @@
         <entity class="de.wirvsvirus.heatmapressources.entity.tracking_sources.services.AboutTracking">
             <include re=".*"/>
         </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.tracking_sources.Tracking">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.PolyGonDatabase">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Addresses">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.BoundingBox">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.AdressesClass">
+            <include re=".*"/>
+        </entity>
+        <entity class="de.wirvsvirus.heatmapressources.entity.locations.Geometry">
+            <include re=".*"/>
+        </entity>
     </entities>
 </fts-config>

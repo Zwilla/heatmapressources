@@ -5,7 +5,7 @@
         focusComponent="form"
         messagesPack="de.wirvsvirus.heatmapressources.web.screens.heatmap_humans5g">
     <data>
-        <instance id="heatMap_Humans5GDc"
+        <instance id="heatMap_Human5GIc"
                   class="de.wirvsvirus.heatmapressources.entity.heatmaps.HeatMap_Humans5G"
                   view="_local">
             <loader/>
@@ -14,18 +14,18 @@
     <dialogMode height="600" width="800"/>
 
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="heatMap_Humans5GDc">
+        <form id="form" dataContainer="heatMap_Human5GIc">
             <column width="250px">
                 <textField id="hm_ImeiField" property="hm_Imei"/>
                 <textField id="hmH_LocationField" property="hmH_Location"/>
                 <dateField id="has_corona_sinceField" property="has_corona_since"/>
             </column>
         </form>
-        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="500px" height="500px">
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="600px">
             <maps:layers selectedLayer="casesLayer">
                 <maps:tile id="tiles"
                            tileProvider="maps_OpenStreetMap"/>
-                <maps:vector id="casesLayer" dataContainer="heatMap_Humans5GDc" editable="true"/>
+                <maps:vector id="casesLayer" dataContainer="heatMap_Human5GIc" editable="true"/>
             </maps:layers>
         </maps:geoMap>
         <hbox id="editActions" spacing="true">

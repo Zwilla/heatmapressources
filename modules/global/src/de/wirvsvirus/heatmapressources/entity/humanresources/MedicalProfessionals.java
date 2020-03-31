@@ -1,5 +1,6 @@
 package de.wirvsvirus.heatmapressources.entity.humanresources;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -12,10 +13,15 @@ import de.wirvsvirus.heatmapressources.entity.locations.Humans;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|mp_Name")
 @Table(name = "HEATMAPRESSOURCES_MEDICAL_PROFESSIONALS")
 @Entity(name = "heatmapressources_MedicalProfessionals")
 public class MedicalProfessionals extends StandardEntity {
     private static final long serialVersionUID = 3654029687346254577L;
+
+    @NotNull
+    @Column(name = "MP_NAME", nullable = false, unique = true)
+    protected String mp_Name;
 
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open"})
     @NotNull
@@ -39,6 +45,16 @@ public class MedicalProfessionals extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "HR_IMEI_ID")
     protected Humans hr_IMEI;
+
+
+    public String getMp_Name() {
+        return mp_Name;
+    }
+
+
+    public void setMp_Name(String mp_Name) {
+        this.mp_Name = mp_Name;
+    }
 
 
     public ControlCenter getMp_ControlCenter() {

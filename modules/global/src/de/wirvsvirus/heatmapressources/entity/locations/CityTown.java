@@ -10,7 +10,7 @@ import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
-import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.LineString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,11 +29,19 @@ public class CityTown extends StandardEntity {
     @JoinColumn(name = "CT_COUNTRY_ID")
     protected Country ct_Country;
 
+    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open"})
+    @NotNull
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "CT_EMERGENCY_CONTACT_ID")
+    protected Humans ct_EmergencyContact;
+
     @Geometry
     @Convert(converter = CubaPointWKTConverter.class)
-    @MetaProperty(datatype = "GeoPoint")
+    @MetaProperty(datatype = "GeoPolyline")
     @Column(name = "CT_LOCATION")
-    protected Point ct_location;
+    protected LineString ct_location;
 
     @NotNull
     @Column(name = "CITY_NAME", nullable = false)
@@ -46,9 +54,6 @@ public class CityTown extends StandardEntity {
     @Column(name = "CT_ZIP_CODE", nullable = false)
     protected String ct_ZipCode;
 
-    @Column(name = "CT_EMERGENCY_CONTACT")
-    protected String ct_Emergency_Contact;
-
     @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
     @NotNull
     @OnDeleteInverse(DeletePolicy.DENY)
@@ -57,22 +62,14 @@ public class CityTown extends StandardEntity {
     @JoinColumn(name = "STATE_PROVINCE_DISTRICT_NAME_ID")
     protected StateProvinceDistrict ct_stateProvinceDistrictName;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open"})
-    @NotNull
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    @OnDelete(DeletePolicy.UNLINK)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CT_EMERGENCY_CONTACT_ID")
-    protected Humans ct_EmergencyContact;
 
-
-    public Point getCt_location() {
-        return ct_location;
+    public void setCt_location(LineString ct_location) {
+        this.ct_location = ct_location;
     }
 
 
-    public void setCt_location(Point ct_location) {
-        this.ct_location = ct_location;
+    public LineString getCt_location() {
+        return ct_location;
     }
 
 
@@ -93,16 +90,6 @@ public class CityTown extends StandardEntity {
 
     public void setCt_EmergencyContact(Humans ct_EmergencyContact) {
         this.ct_EmergencyContact = ct_EmergencyContact;
-    }
-
-
-    public String getCt_Emergency_Contact() {
-        return ct_Emergency_Contact;
-    }
-
-
-    public void setCt_Emergency_Contact(String ct_Emergency_Contact) {
-        this.ct_Emergency_Contact = ct_Emergency_Contact;
     }
 
 

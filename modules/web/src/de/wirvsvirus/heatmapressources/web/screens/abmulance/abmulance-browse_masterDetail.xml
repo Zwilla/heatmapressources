@@ -43,6 +43,7 @@
                         <column id="a_tracking_source"/>
                         <column id="a_Type"/>
                         <column id="a_directContact"/>
+                        <column id="a_Name"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -65,6 +66,7 @@
                             <textField id="a_tracking_sourceField" property="a_tracking_source"/>
                             <textField id="a_TypeField" property="a_Type"/>
                             <textField id="a_directContactField" property="a_directContact"/>
+                            <textField id="a_NameField" property="a_Name"/>
                         </column>
                     </form>
                 </scrollBox>

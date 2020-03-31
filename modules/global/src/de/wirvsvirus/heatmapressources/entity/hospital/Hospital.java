@@ -1,49 +1,48 @@
 package de.wirvsvirus.heatmapressources.entity.hospital;
-import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Lookup;
-import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
-
+import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|hospitalName")
+@NamePattern("%s|h_Name")
 @Table(name = "HEATMAPRESSOURCES_HOSPITAL")
 @Entity(name = "heatmapressources_Hospital")
 public class Hospital extends StandardEntity {
     private static final long serialVersionUID = -4041177584120992422L;
 
-    @Lookup(type = LookupType.DROPDOWN, actions = "lookup")
-    @NotNull
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.UNLINK)
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "H_CONTROL_CENTER_ID")
     protected ControlCenter h_ControlCenter;
+
+    @Column(name = "H_LOCATION_UUID")
+    protected String h_location_uuid;
 
     @Lob
     @Column(name = "H_ADDRESS")
     protected String h_address;
 
     @NotNull
-    @Column(name = "HOSPITAL_NAME", nullable = false)
-    protected String hospitalName;
+    @Column(name = "H_NAME", nullable = false)
+    protected String h_Name;
 
     @Geometry
     @Convert(converter = CubaPointWKTConverter.class)
     @MetaProperty(datatype = "GeoPoint")
-    @Column(name = "LOCATION")
-    protected Point location;
+    @Column(name = "H_LOCATION")
+    protected Point h_location;
 
     @NotNull
     @Column(name = "H_MAX_ROOMS", nullable = false)
@@ -60,8 +59,28 @@ public class Hospital extends StandardEntity {
     protected Integer h_IntensiveCareUnits;
 
     @NotNull
-    @Column(name = "DESCRIPTION", nullable = false)
-    protected String description;
+    @Column(name = "H_DESCRIPTION", nullable = false)
+    protected String h_description;
+
+
+    public void setH_ControlCenter(ControlCenter h_ControlCenter) {
+        this.h_ControlCenter = h_ControlCenter;
+    }
+
+
+    public ControlCenter getH_ControlCenter() {
+        return h_ControlCenter;
+    }
+
+
+    public String getH_location_uuid() {
+        return h_location_uuid;
+    }
+
+
+    public void setH_location_uuid(String h_location_uuid) {
+        this.h_location_uuid = h_location_uuid;
+    }
 
 
     public String getH_address() {
@@ -74,23 +93,13 @@ public class Hospital extends StandardEntity {
     }
 
 
-    public ControlCenter getH_ControlCenter() {
-        return h_ControlCenter;
+    public Point getH_location() {
+        return h_location;
     }
 
 
-    public void setH_ControlCenter(ControlCenter h_ControlCenter) {
-        this.h_ControlCenter = h_ControlCenter;
-    }
-
-
-    public Point getLocation() {
-        return location;
-    }
-
-
-    public void setLocation(Point location) {
-        this.location = location;
+    public void setH_location(Point h_location) {
+        this.h_location = h_location;
     }
 
 
@@ -129,22 +138,22 @@ public class Hospital extends StandardEntity {
     }
 
 
-    public String getDescription() {
-        return description;
+    public String getH_description() {
+        return h_description;
     }
 
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setH_description(String h_description) {
+        this.h_description = h_description;
     }
 
 
-    public String getHospitalName() {
-        return hospitalName;
+    public String getH_Name() {
+        return h_Name;
     }
 
 
-    public void setHospitalName(String hospitalName) {
-        this.hospitalName = hospitalName;
+    public void setH_Name(String h_Name) {
+        this.h_Name = h_Name;
     }
 }

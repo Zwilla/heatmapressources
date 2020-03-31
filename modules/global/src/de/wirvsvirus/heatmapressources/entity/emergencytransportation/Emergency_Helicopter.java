@@ -3,6 +3,7 @@ package de.wirvsvirus.heatmapressources.entity.emergencytransportation;
 import com.haulmont.addon.maps.gis.Geometry;
 import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import de.wirvsvirus.heatmapressources.entity.controlcenter.ControlCenter;
 import org.locationtech.jts.geom.Point;
@@ -10,10 +11,15 @@ import org.locationtech.jts.geom.Point;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s|eh_Name")
 @Table(name = "HEATMAPRESSOURCES_EMERGENCY_HELICOPTER")
 @Entity(name = "heatmapressources_Emergency_Helicopter")
 public class Emergency_Helicopter extends StandardEntity {
     private static final long serialVersionUID = 4917347614501063430L;
+
+    @NotNull
+    @Column(name = "EH_NAME", nullable = false)
+    protected String eh_Name;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -43,6 +49,16 @@ public class Emergency_Helicopter extends StandardEntity {
     @NotNull
     @Column(name = "EH_CONTACT", nullable = false)
     protected String eh_contact;
+
+
+    public String getEh_Name() {
+        return eh_Name;
+    }
+
+
+    public void setEh_Name(String eh_Name) {
+        this.eh_Name = eh_Name;
+    }
 
 
     public String getEh_location_tracking_source() {

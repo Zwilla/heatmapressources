@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="stateProvinceDistrictsTable"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.stateprovincedistrict">
+    <data readOnly="true">
+        <collection id="stateProvinceDistrictsDc"
+                    class="de.wirvsvirus.heatmapressources.entity.locations.StateProvinceDistrict">
+            <view extends="_local">
+                <property name="spd_countryName" view="_minimal"/>
+                <property name="spd_EmergencyContact" view="_minimal"/>
+            </view>
+            <loader id="stateProvinceDistrictsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_StateProvinceDistrict e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stateProvinceDistrictsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="stateProvinceDistrictsTable"
+                dataLoader="stateProvinceDistrictsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="stateProvinceDistrictsTable"
+                    width="100%"
+                    dataContainer="stateProvinceDistrictsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="spd_countryName"/>
+                <column id="spd_EmergencyContact"/>
+                <column id="stateProvinceDistrictName"/>
+                <column id="spd_description"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="stateProvinceDistrictsTable.create"/>
+                <button id="editBtn" action="stateProvinceDistrictsTable.edit"/>
+                <button id="removeBtn" action="stateProvinceDistrictsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

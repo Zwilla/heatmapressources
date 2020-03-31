@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://browseCaption"
+        focusComponent="hospitalsTable"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.hospital">
+    <data readOnly="true">
+        <collection id="hospitalsDc"
+                    class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital"
+                    >
+            <view extends="_local">
+                <property name="h_ControlCenter" view="_minimal"/>
+            </view>
+            <loader id="hospitalsDl">
+                <query>
+                    <![CDATA[select e from heatmapressources_Hospital e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="hospitalsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="hospitalsTable"
+                dataLoader="hospitalsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="hospitalsTable"
+                    width="100%"
+                    dataContainer="hospitalsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="h_ControlCenter"/>
+                <column id="h_location_uuid"/>
+                <column id="h_address"/>
+                <column id="h_Name"/>
+                <column id="h_location"/>
+                <column id="h_maxRooms"/>
+                <column id="h_Rooms_With_RespiratoryVentilator"/>
+                <column id="h_Rooms_With_RespiratoryVentilator_Free"/>
+                <column id="h_IntensiveCareUnits"/>
+                <column id="h_description"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="hospitalsTable.create"/>
+                <button id="editBtn" action="hospitalsTable.edit"/>
+                <button id="removeBtn" action="hospitalsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="800px">
+            <maps:layers selectedLayer="mapsLayer">
+                <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="mapsLayer" dataContainer="hospitalsDc" editable="false"/>
+            </maps:layers>
+        </maps:geoMap>
+    </layout>
+</window>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="de.wirvsvirus.heatmapressources.web.screens.hospital">
+    <data>
+        <instance id="hospitalDc"
+                  class="de.wirvsvirus.heatmapressources.entity.hospital.Hospital">
+            <view extends="_local">
+                <property name="h_ControlCenter" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600" width="80%"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="hospitalDc">
+            <column width="250px">
+                <textField id="h_ControlCenterField" property="h_ControlCenter"/>
+                <textField id="location_uuidField" property="h_location_uuid"/>
+                <textArea id="h_addressField" property="h_address" rows="5"/>
+                <textField id="hospitalNameField" property="h_Name"/>
+                <textField id="locationField" property="h_location"/>
+                <textField id="h_maxRoomsField" property="h_maxRooms"/>
+                <textField id="h_Rooms_With_RespiratoryVentilatorField" property="h_Rooms_With_RespiratoryVentilator"/>
+                <textField id="h_Rooms_With_RespiratoryVentilator_FreeField" property="h_Rooms_With_RespiratoryVentilator_Free"/>
+                <textField id="h_IntensiveCareUnitsField" property="h_IntensiveCareUnits"/>
+                <textField id="descriptionField" property="h_description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+        <maps:geoMap zoom="7" center="8.4964812, 50.1211277" id="Map" width="100%" height="400px">
+            <maps:layers selectedLayer="mapsLayer">
+                <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="mapsLayer" dataContainer="hospitalDc" editable="true"/>
+            </maps:layers>
+        </maps:geoMap>
+    </layout>
+</window>
